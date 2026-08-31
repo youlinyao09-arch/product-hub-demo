@@ -736,6 +736,8 @@ function navigate() {
     "#/req/dev": "pageReqDev",
     "#/req/dev/detail": "pageReqDevDetail",
     "#/product/spectrum": "pageSpectrum",
+    "#/product/spectrum/detail": "pageProductDetail",
+    "#/product/spectrum/bp": "pageProductBpArchive",
     "#/product/bp-overview": "pageBpOverview",
     "#/product/bp-overview/detail": "pageBpOvDetail",
     "#/product/bp-publish": "pageBpList",
@@ -757,6 +759,11 @@ function navigate() {
   }
   if (path === "#/market/insight/detail") renderInsightDetail();
   if (path === "#/product/spectrum") renderSpectrumPage();
+  if (path === "#/product/spectrum/detail") renderProductDetail();
+  if (path === "#/product/spectrum/bp") {
+    renderProductBpArchive();
+    requestAnimationFrame(() => layoutStepScrolls());
+  }
   if (path === "#/product/bp-overview") {
     renderBoTable();
     renderBoCharts();
@@ -780,6 +787,8 @@ const openTabs = [
 
 function tabTitle(path) {
   if (path === "#/market/insight") return "市场洞察";
+  if (path === "#/product/spectrum/detail") return "产品图谱";
+  if (path === "#/product/spectrum/bp") return "商业计划书任务处理";
   return (PAGE_META[path] && PAGE_META[path].title) || "页面";
 }
 
@@ -789,6 +798,8 @@ function tabKey(path) {
   if (path.startsWith("#/req/list")) return "#/req/list";
   if (path.startsWith("#/req/assign")) return "#/req/assign";
   if (path.startsWith("#/req/dev")) return "#/req/dev";
+  if (path === "#/product/spectrum/bp") return "#/product/spectrum/bp";
+  if (path.startsWith("#/product/spectrum")) return "#/product/spectrum";
   if (path.startsWith("#/product/bp-overview")) return "#/product/bp-overview";
   if (path.startsWith("#/product/bp-publish")) return "#/product/bp-publish";
   if (path.startsWith("#/product/bp-handle")) return "#/product/bp-handle";
@@ -1785,6 +1796,17 @@ function ensureSpChart() {
     spChart.on("click", (params) => {
       if (!params.data || !params.data.id) return;
       if (String(params.data.id).startsWith("lbl-")) return;
+      if (params.data.level === 4) {
+        const hit = findSpectrumProduct(params.data.name);
+        openProductDetail(
+          hit || {
+            name: params.data.name,
+            org: params.data.org || "",
+            tags: params.data.tags || [],
+          }
+        );
+        return;
+      }
       focusSpGraphNode(params.data.id);
     });
     if (!spChartRo && typeof ResizeObserver !== "undefined") {
@@ -2157,7 +2179,11 @@ function renderSpectrumPage() {
                   <section class="sp-l3">
                     <h3 class="sp-l3-name">${g.name}</h3>
                     <div class="sp-cards">
-                      ${g.items.map((it) => `<article class="sp-card" role="button" tabindex="0">
+                      ${g.items.map((it) => `<article class="sp-card" role="button" tabindex="0"
+                        data-sp-name="${it.name}"
+                        data-sp-org="${it.org || ""}"
+                        data-sp-tags="${(it.tags || []).join(",")}"
+                        data-sp-path="${l1.name} / ${row.name} / ${g.name} / ${it.name}">
                         ${spKidsHtml(it)}
                         <span class="sp-card-ico">${spProductIco(it.name)}</span>
                         <span class="sp-card-body">
@@ -2184,6 +2210,205 @@ function renderSpectrumPage() {
 function renderSpectrum() {
   renderSpectrumPage();
   return "";
+}
+
+/* ---------- 产品详情（产品图谱） ---------- */
+const pdState = {
+  name: "GFXIN",
+  org: "咪咕公司、互联网公司",
+  tags: ["必"],
+  path: "通信服务 / 移动通信 / 移动流量 / GFXIN",
+  code: "",
+  type: "",
+  tab: "bp",
+  bpCode: "BP-0-20260826174153",
+  bpName: "2026年GFXIN商业计划书",
+};
+
+const PD_REQ_SEED = [
+  { code: "RR-2041-202608208249", name: "123", stage: "RR", status: "待分析", tone: "warn", user: "平台运营测试员2号—广东", time: "2026-08-20 19:56:58" },
+  { code: "RR-2041-202608208250", name: "测试我的发起", stage: "RR", status: "待分析审核", tone: "ing", user: "RMT测试员1号—集团", time: "2026-08-20 18:12:05" },
+  { code: "RR-2041-202608208251", name: "流量套餐优化", stage: "RR", status: "已驳回", tone: "alert", user: "平台运营测试员2号—广东", time: "2026-08-19 11:20:33" },
+  { code: "RR-2041-202608208252", name: "分省运营看板", stage: "RR", status: "待分析", tone: "warn", user: "RMT测试员1号—集团", time: "2026-08-18 09:40:11" },
+  { code: "RR-2041-202608208253", name: "计费能力对齐", stage: "RR", status: "待分析审核", tone: "ing", user: "平台运营测试员2号—广东", time: "2026-08-17 16:05:44" },
+  { code: "RR-2041-202608208254", name: "渠道分发策略", stage: "RR", status: "待分析", tone: "warn", user: "RMT测试员2号—集团", time: "2026-08-16 14:22:09" },
+  { code: "RR-2041-202608208255", name: "风控规则补充", stage: "RR", status: "已驳回", tone: "alert", user: "平台运营测试员1号—广东", time: "2026-08-15 10:11:50" },
+  { code: "RR-2041-202608208256", name: "内容触达模板", stage: "RR", status: "待分析", tone: "warn", user: "RMT测试员1号—集团", time: "2026-08-14 20:08:27" },
+  { code: "RR-2041-202608208257", name: "跨省复制方案", stage: "RR", status: "待分析审核", tone: "ing", user: "平台运营测试员2号—广东", time: "2026-08-13 08:33:16" },
+  { code: "RR-2041-202608208258", name: "运营指标闭环", stage: "RR", status: "待分析", tone: "warn", user: "RMT测试员1号—集团", time: "2026-08-12 15:49:02" },
+];
+
+function openProductDetail(payload) {
+  const p = payload || {};
+  const found = p.name ? findSpectrumProduct(p.name) : null;
+  const src = { ...(found || {}), ...p };
+  pdState.name = src.name || "GFXIN";
+  pdState.org = src.org || "—";
+  pdState.tags = Array.isArray(src.tags) ? src.tags : [];
+  pdState.path = src.path || pdState.name;
+  pdState.code = src.code || "";
+  pdState.type = src.type || "";
+  if (pdState.name === "移动流量") {
+    pdState.code = pdState.code || "1.1.1.1";
+    pdState.type = pdState.type || "一";
+    pdState.tab = "req";
+  } else {
+    pdState.tab = "bp";
+  }
+  pdState.bpCode = pdState.name === "GFXIN" ? "BP-0-20260826174153" : `BP-0-20260827${String(Date.now()).slice(-6)}`;
+  pdState.bpName = `2026年${pdState.name}商业计划书`;
+  goPath("#/product/spectrum/detail");
+}
+
+function findSpectrumProduct(name) {
+  for (const l1 of SPECTRUM) {
+    for (const l2 of l1.l2) {
+      for (const g of l2.l3) {
+        const hit = g.items.find((it) => it.name === name);
+        if (hit) {
+          return {
+            name: hit.name,
+            org: hit.org || "",
+            tags: hit.tags || [],
+            path: `${l1.name} / ${l2.name} / ${g.name} / ${hit.name}`,
+            code: "",
+            type: "",
+          };
+        }
+      }
+    }
+  }
+  return null;
+}
+
+function pdTagHtml(tags) {
+  const t = (tags && tags[0]) || "";
+  if (!t) return "";
+  const cls = t === "必" ? "is-must" : t === "主" ? "is-main" : t === "育" ? "is-grow" : "is-new";
+  return `<span class="sp-tag ${cls}" id="pdTag">${t === "必" ? "必" : t}</span>`;
+}
+
+function renderProductDetail() {
+  const nameEl = document.getElementById("pdName");
+  if (nameEl) nameEl.textContent = pdState.name;
+  const tagHost = document.querySelector("#pageProductDetail .pd-title-row");
+  if (tagHost) {
+    const old = document.getElementById("pdTag");
+    if (old) old.remove();
+    if (pdState.tags.length) {
+      nameEl.insertAdjacentHTML("afterend", pdTagHtml(pdState.tags));
+    }
+  }
+  const setText = (id, v) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = v || "—";
+  };
+  setText("pdPath", pdState.path);
+  setText("pdCode", pdState.code || "—");
+  setText("pdOrg", pdState.org || "—");
+  setText("pdType", pdState.type || "—");
+
+  const bps =
+    pdState.name === "移动流量"
+      ? []
+      : [
+          {
+            code: pdState.bpCode,
+            year: "2026",
+            name: pdState.bpName,
+            ver: "V1.0",
+            time: pdState.name === "GFXIN" ? "2026-08-26 17:41:53" : "2026-08-27 10:20:11",
+          },
+        ];
+  const reqs = pdState.name === "移动流量" ? PD_REQ_SEED : [];
+
+  const bpCount = document.getElementById("pdBpCount");
+  const reqCount = document.getElementById("pdReqCount");
+  if (bpCount) bpCount.textContent = String(bps.length);
+  if (reqCount) reqCount.textContent = String(reqs.length);
+
+  document.querySelectorAll("#pdTabs .ad-tab").forEach((btn) => {
+    btn.classList.toggle("is-on", btn.dataset.pdtab === pdState.tab);
+  });
+  const paneBp = document.getElementById("pdPaneBp");
+  const paneReq = document.getElementById("pdPaneReq");
+  if (paneBp) paneBp.classList.toggle("hidden", pdState.tab !== "bp");
+  if (paneReq) paneReq.classList.toggle("hidden", pdState.tab !== "req");
+
+  const bpBody = document.getElementById("pdBpBody");
+  if (bpBody) {
+    bpBody.innerHTML = bps.length
+      ? bps.map((r) => `<tr>
+          <td><a class="link" href="#/product/spectrum/bp" data-pd-bp="${r.code}">${r.code}</a></td>
+          <td>${r.year}</td>
+          <td>${r.name}</td>
+          <td>${r.ver}</td>
+          <td>${r.time}</td>
+          <td class="col-ops"><a class="link" href="#/product/spectrum/bp" data-pd-preview="${r.code}">预览</a></td>
+        </tr>`).join("")
+      : `<tr><td colspan="6"><div class="pd-empty">暂无商业计划书</div></td></tr>`;
+  }
+  const bpFoot = document.getElementById("pdBpFoot");
+  if (bpFoot) bpFoot.textContent = `共 ${bps.length} 条`;
+
+  const reqBody = document.getElementById("pdReqBody");
+  if (reqBody) {
+    reqBody.innerHTML = reqs.length
+      ? reqs.map((r) => `<tr>
+          <td><a class="link" href="#/req/list/detail">${r.code}</a></td>
+          <td>${r.name}</td>
+          <td><span class="linetag t-ing">${r.stage}</span></td>
+          <td><span class="st-tag t-${r.tone}"><i></i>${r.status}</span></td>
+          <td>${r.user}</td>
+          <td>${r.time}</td>
+          <td class="col-ops"><a class="link" href="#/req/list/detail">详情</a></td>
+        </tr>`).join("")
+      : `<tr><td colspan="7"><div class="pd-empty">暂无产品需求</div></td></tr>`;
+  }
+  const reqFoot = document.getElementById("pdReqFoot");
+  if (reqFoot) reqFoot.textContent = `共 ${reqs.length} 条`;
+}
+
+function renderProductBpArchive() {
+  const name = pdState.name || "GFXIN";
+  const setText = (id, v) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = v;
+  };
+  setText("pdBpName", name);
+  setText("pdBpNavName", name);
+  const tag = document.getElementById("pdBpTag");
+  if (tag) tag.textContent = "新产品";
+  const meta = document.getElementById("pdBpMeta");
+  if (meta) {
+    meta.innerHTML = `
+      <span>文档编号：<em class="is-code">${pdState.bpCode || "BP-0-20260826174153"}</em></span>
+      <span>归属公司：<em>${pdState.org || "—"}</em></span>
+      <span>规划年度：<em>2026</em></span>
+      <span>截止时间：<em>2026-08-31</em></span>
+      <span>当前处理人：<em>平台运营测试员2号</em></span>
+      <span>流程环节：<em>归档</em></span>
+      <span>版本标签：<em>V1.0</em></span>`;
+  }
+  const body = document.getElementById("pdBpBodyText");
+  if (body) {
+    body.innerHTML = `
+      <p>${name} 以移动流量与内容分发场景为切入点，面向政企与省级客户提供可规模化交付的流量运营与内容触达能力。产品定位聚焦「可编排、可计量、可运营」的流量服务底座，支撑套餐包装、渠道分发与运营分析闭环。</p>
+      <p>过去一年已完成核心算法与试点省落地验证，重点市场占有率稳步提升。2026 年将以标准化产品包为主线，推动跨省复制与渠道协同，完善计费、风控与运营看板能力。</p>
+      <p>未来三年规划保持两位数增长目标，投入重点覆盖研发迭代、运营保障与市场拓展。通过联合例会与版本窗口管理，降低跨单位协作风险，保障规划落地节奏。</p>
+      <p>风险方面重点关注协作断点、需求变更与交付窗口冲突，将通过联合例会、版本冻结窗口与应急预案机制持续管控。</p>`;
+  }
+  const title = document.getElementById("bpPreviewTitle");
+  if (title) title.textContent = `${name} 产品商业计划书-2026版`;
+  const paper = document.querySelector("#bpPreviewDlg .bp-preview-paper");
+  if (paper) {
+    paper.innerHTML = `
+      <h4>商业计划书正文</h4>
+      <p>${name} 以移动流量与内容分发场景为切入点，面向政企与省级客户提供可规模化交付的流量运营与内容触达能力。产品定位聚焦「可编排、可计量、可运营」的流量服务底座，支撑套餐包装、渠道分发与运营分析闭环。</p>
+      <p>过去一年已完成核心算法与试点省落地验证，重点市场占有率稳步提升。2026 年将以标准化产品包为主线，推动跨省复制与渠道协同，完善计费、风控与运营看板能力。</p>
+      <p>未来三年规划保持两位数增长目标，投入重点覆盖研发迭代、运营保障与市场拓展。通过联合例会与版本窗口管理，降低跨单位协作风险，保障规划落地节奏。</p>
+      <p>风险方面重点关注协作断点、需求变更与交付窗口冲突，将通过联合例会、版本冻结窗口与应急预案机制持续管控。</p>`;
+  }
 }
 
 const BO_ING_SEED = [
@@ -5561,6 +5786,41 @@ function bindBp() {
   listen("bpApprOpen", "click", () => bpAppr && bpAppr.open());
   listen("bpPreviewOpen", "click", () => bpPreview && bpPreview.open());
   listen("bpPreviewExport", "click", () => toast("已导出商业计划书"));
+  listen("pdBack", "click", () => goPath("#/product/spectrum"));
+  listen("pdTabs", "click", (e) => {
+    const btn = e.target.closest("[data-pdtab]");
+    if (!btn) return;
+    pdState.tab = btn.dataset.pdtab;
+    renderProductDetail();
+  });
+  listen("pdOpsBtn", "click", (e) => {
+    e.stopPropagation();
+    const wrap = document.getElementById("pdOps");
+    if (wrap) wrap.classList.toggle("is-on");
+  });
+  listen("pdOps", "click", (e) => {
+    const btn = e.target.closest("[data-pd-act]");
+    if (!btn) return;
+    document.getElementById("pdOps")?.classList.remove("is-on");
+    if (btn.dataset.pdAct === "export") toast("已导出产品信息");
+    if (btn.dataset.pdAct === "refresh") {
+      renderProductDetail();
+      toast("已刷新");
+    }
+  });
+  listen("pdPaneBp", "click", (e) => {
+    const a = e.target.closest("[data-pd-preview], [data-pd-bp]");
+    if (!a) return;
+    e.preventDefault();
+    goPath("#/product/spectrum/bp");
+  });
+  listen("pdBpBack", "click", () => goPath("#/product/spectrum/detail"));
+  listen("pdBpDlTpl", "click", () => toast("已开始下载模板"));
+  listen("pdBpExport", "click", () => toast("已导出商业计划书"));
+  listen("pdBpRevOpen", "click", () => bpRev && bpRev.open());
+  listen("pdBpHistOpen", "click", () => bpHist && bpHist.open());
+  listen("pdBpApprOpen", "click", () => bpAppr && bpAppr.open());
+  listen("pdBpPreviewOpen", "click", () => bpPreview && bpPreview.open());
   const bpReport = bindDlg("bpReportDlg", ["bpReportMask", "bpReportClose", "bpReportOk"]);
   listen("bpReportDl", "click", () => toast("已开始下载 PDF 报告"));
   listen("bpOvBack", "click", () => goPath("#/product/bp-overview"));
@@ -5634,7 +5894,13 @@ function bindBp() {
     }
     if (e.target.closest(".sp-card")) {
       closeSpKidsPop();
-      toast("产品详情开发中");
+      const card = e.target.closest(".sp-card");
+      openProductDetail({
+        name: card.dataset.spName || "产品",
+        org: card.dataset.spOrg || "",
+        tags: (card.dataset.spTags || "").split(",").filter(Boolean),
+        path: card.dataset.spPath || "",
+      });
     }
   });
   listen("spTree", "keydown", (e) => {
@@ -5652,7 +5918,12 @@ function bindBp() {
     if (card && !e.target.closest(".sp-kids")) {
       e.preventDefault();
       closeSpKidsPop();
-      toast("产品详情开发中");
+      openProductDetail({
+        name: card.dataset.spName || "产品",
+        org: card.dataset.spOrg || "",
+        tags: (card.dataset.spTags || "").split(",").filter(Boolean),
+        path: card.dataset.spPath || "",
+      });
     }
   });
   document.addEventListener("click", (e) => {
