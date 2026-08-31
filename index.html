@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>产品枢纽平台</title>
-  <link rel="stylesheet" href="css/app.css?v=20260831n">
+  <link rel="stylesheet" href="css/app.css?v=20260831t">
 </head>
 <body>
   <header class="header" id="header">
@@ -3122,17 +3122,11 @@
         <div class="pd-archive-layout">
           <aside class="plan-nav">
             <div class="plan-nav-hd"><span id="pdBpNavName">GFXIN</span><span>版本：V1.0</span></div>
-            <button type="button" class="is-on">商业计划书正文</button>
-            <div class="pd-attach-ft">附件（0）</div>
+            <button type="button" class="is-on" id="pdBpNavBody">商业计划书正文</button>
           </aside>
           <div class="plan-body pd-archive-body">
             <h4>商业计划书正文</h4>
-            <div class="pd-archive-text" id="pdBpBodyText">
-              <p>GFXIN 以移动流量与内容分发场景为切入点，面向政企与省级客户提供可规模化交付的流量运营与内容触达能力。产品定位聚焦「可编排、可计量、可运营」的流量服务底座，支撑套餐包装、渠道分发与运营分析闭环。</p>
-              <p>过去一年已完成核心算法与试点省落地验证，重点市场占有率稳步提升。2026 年将以标准化产品包为主线，推动跨省复制与渠道协同，完善计费、风控与运营看板能力。</p>
-              <p>未来三年规划保持两位数增长目标，投入重点覆盖研发迭代、运营保障与市场拓展。通过联合例会与版本窗口管理，降低跨单位协作风险，保障规划落地节奏。</p>
-              <p>风险方面重点关注协作断点、需求变更与交付窗口冲突，将通过联合例会、版本冻结窗口与应急预案机制持续管控。</p>
-            </div>
+            <div class="pd-archive-text" id="pdBpBodyText"></div>
           </div>
           <aside class="pd-review-side">
             <h4>评审结果</h4>
@@ -3146,6 +3140,16 @@
               <p>计划书结构严谨、定位清晰，对 2026 年市场需求具备前瞻性，技术路径与落地节奏匹配度较高。建议进入下一实施阶段，并持续补强跨端兼容性验证与运营指标闭环。</p>
             </div>
           </aside>
+        </div>
+        <div class="pd-attach-card" id="pdBpAttachCard">
+          <h4 class="pd-attach-hd">
+            <span class="wb-hd-ico" aria-hidden="true"><img src="img/detail/attachment.svg" alt=""></span>
+            附件
+          </h4>
+          <div class="pd-attach-empty">
+            <img src="img/empty/no-files.svg" alt="">
+            <p>暂无附件</p>
+          </div>
         </div>
       </div>
     </section>
@@ -3686,13 +3690,7 @@
         </button>
       </div>
       <div class="dlg-bd bp-preview-bd">
-        <div class="bp-preview-paper">
-          <h4>商业计划书正文</h4>
-          <p>GFXIN 以移动流量与内容分发场景为切入点，面向政企与省级客户提供可规模化交付的流量运营与内容触达能力。产品定位聚焦「可编排、可计量、可运营」的流量服务底座，支撑套餐包装、渠道分发与运营分析闭环。</p>
-          <p>过去一年已完成核心算法与试点省落地验证，重点市场占有率稳步提升。2026 年将以标准化产品包为主线，推动跨省复制与渠道协同，完善计费、风控与运营看板能力。</p>
-          <p>未来三年规划保持两位数增长目标，投入重点覆盖研发迭代、运营保障与市场拓展。通过联合例会与版本窗口管理，降低跨单位协作风险，保障规划落地节奏。</p>
-          <p>风险方面重点关注协作断点、需求变更与交付窗口冲突，将通过联合例会、版本冻结窗口与应急预案机制持续管控。</p>
-        </div>
+        <div class="bp-preview-paper" id="bpPreviewPaper"></div>
       </div>
       <div class="dlg-ft">
         <button type="button" class="btn btn-ghost" id="bpPreviewExport">
@@ -4248,6 +4246,6 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
-  <script src="js/app.js?v=20260831n"></script>
+  <script src="js/app.js?v=20260831r"></script>
 </body>
 </html>

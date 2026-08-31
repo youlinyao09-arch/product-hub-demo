@@ -2369,6 +2369,15 @@ function renderProductDetail() {
   if (reqFoot) reqFoot.textContent = `共 ${reqs.length} 条`;
 }
 
+function pdBpBodyHtml(name) {
+  const n = name || "GFXIN";
+  return `
+    <p>本商业计划书旨在阐述 ${n} 项目的核心价值与市场定位。产品面向移动流量与内容分发场景，通过整合稳定链路能力与可运营数据分析，为企业与省公司客户提供可规模化交付的流量运营与内容触达方案。</p>
+    <p>在过去一年中，团队已在核心算法、计费联调与试点省份接入方面取得阶段性成效，市场占有率稳步提升。2026 规划年度内，将完成重点省份试点验证，沉淀标准化产品包，并形成可复制的运营打法。</p>
+    <p>未来三年，${n} 将继续深耕流量经营与内容生态协同，优化产品体验，扩大合作伙伴生态圈，力争实现业务规模翻倍增长。投入产出测算覆盖研发、运营与市场推广，预期在规划期内实现收支平衡并贡献稳定收入。</p>
+    <p>主要风险集中在跨单位协同与需求变更节奏，拟通过联合例会、版本冻结窗口与回滚预案加以管控。咪咕公司与互联网公司共同作为主建单位，配备产品、研发、运营与客服支撑团队，保障上线后的监控、客诉与持续优化闭环。</p>`;
+}
+
 function renderProductBpArchive() {
   const name = pdState.name || "GFXIN";
   const setText = (id, v) => {
@@ -2390,24 +2399,14 @@ function renderProductBpArchive() {
       <span>流程环节：<em>归档</em></span>
       <span>版本标签：<em>V1.0</em></span>`;
   }
+  const bodyHtml = pdBpBodyHtml(name);
   const body = document.getElementById("pdBpBodyText");
-  if (body) {
-    body.innerHTML = `
-      <p>${name} 以移动流量与内容分发场景为切入点，面向政企与省级客户提供可规模化交付的流量运营与内容触达能力。产品定位聚焦「可编排、可计量、可运营」的流量服务底座，支撑套餐包装、渠道分发与运营分析闭环。</p>
-      <p>过去一年已完成核心算法与试点省落地验证，重点市场占有率稳步提升。2026 年将以标准化产品包为主线，推动跨省复制与渠道协同，完善计费、风控与运营看板能力。</p>
-      <p>未来三年规划保持两位数增长目标，投入重点覆盖研发迭代、运营保障与市场拓展。通过联合例会与版本窗口管理，降低跨单位协作风险，保障规划落地节奏。</p>
-      <p>风险方面重点关注协作断点、需求变更与交付窗口冲突，将通过联合例会、版本冻结窗口与应急预案机制持续管控。</p>`;
-  }
+  if (body) body.innerHTML = bodyHtml;
   const title = document.getElementById("bpPreviewTitle");
-  if (title) title.textContent = `${name} 产品商业计划书-2026版`;
-  const paper = document.querySelector("#bpPreviewDlg .bp-preview-paper");
+  if (title) title.textContent = `${name}产品商业计划书-2026版`;
+  const paper = document.getElementById("bpPreviewPaper") || document.querySelector("#bpPreviewDlg .bp-preview-paper");
   if (paper) {
-    paper.innerHTML = `
-      <h4>商业计划书正文</h4>
-      <p>${name} 以移动流量与内容分发场景为切入点，面向政企与省级客户提供可规模化交付的流量运营与内容触达能力。产品定位聚焦「可编排、可计量、可运营」的流量服务底座，支撑套餐包装、渠道分发与运营分析闭环。</p>
-      <p>过去一年已完成核心算法与试点省落地验证，重点市场占有率稳步提升。2026 年将以标准化产品包为主线，推动跨省复制与渠道协同，完善计费、风控与运营看板能力。</p>
-      <p>未来三年规划保持两位数增长目标，投入重点覆盖研发迭代、运营保障与市场拓展。通过联合例会与版本窗口管理，降低跨单位协作风险，保障规划落地节奏。</p>
-      <p>风险方面重点关注协作断点、需求变更与交付窗口冲突，将通过联合例会、版本冻结窗口与应急预案机制持续管控。</p>`;
+    paper.innerHTML = `<h4>商业计划书正文</h4>${bodyHtml}`;
   }
 }
 
