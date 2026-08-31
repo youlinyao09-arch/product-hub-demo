@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>产品枢纽平台 · 需求开发</title>
+  <link rel="stylesheet" href="../../css/app.css">
+</head>
+<body data-standalone="dev">
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a class="logo" id="logoHome" href="#/me/todo" title="产品枢纽平台">
+        <img src="../../img/顶部左侧导航栏logo.svg" width="144" height="30" alt="产品枢纽平台">
+      </a>
+
+      <nav class="nav" id="nav">
+        <button class="nav-item is-current" data-key="market">市场管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="req">需求管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="product">产品管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="config">配置管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="me">个人中心<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </nav>
+
+      <div class="header-right">
+        <div class="portal-switch" id="portalSwitch">
+          <span class="portal-label">IPD管理门户</span>
+          <span class="caret" aria-hidden="true"></span>
+          <div class="portal-menu">
+            <button type="button" data-portal="ops">产品运营门户</button>
+            <button type="button" data-portal="ipd" class="is-active">IPD管理门户</button>
+          </div>
+        </div>
+
+        <div class="user-entry" id="userEntry">
+          <img src="../../img/右侧超级管理员头像.svg" width="32" height="32" alt="超级管理员">
+          <span class="uname">超级管理员</span>
+          <div class="user-menu">
+            <button id="goTodo">待办工作台</button>
+            <button type="button" onclick="goPath('#/me/notices')">公告消息</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mega-mask" id="megaMask"></div>
+    <div class="mega" id="mega">
+      <div class="mega-inner">
+        <aside class="mega-l1">
+          <button type="button" class="mega-l1-name" id="megaL1Btn">
+            <span id="megaL1Title">市场管理</span>
+          </button>
+        </aside>
+        <div class="mega-right">
+          <div class="mega-cols" id="megaBody"></div>
+          <button class="mega-close" id="megaClose" aria-label="关闭">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="tags-bar">
+    <div class="tags-list" id="tagsList"></div>
+    <div class="tags-more" id="tagsMore">
+      <button type="button" class="tags-more-btn" id="tagsMoreBtn">
+        操作
+        <span class="caret" aria-hidden="true"></span>
+      </button>
+      <div class="tags-more-menu">
+        <button type="button" data-close-act="others">关闭其它</button>
+        <button type="button" data-close-act="all">关闭全部</button>
+        <button type="button" data-close-act="fullscreen">全屏</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="main">
+<!-- 需求开发 -->
+    <section id="pageReqDev" class="hidden">
+      <div class="page-head an-head">
+        <div>
+          <h1 class="an-title">需求开发</h1>
+          <p class="an-desc">展示 AR 需求列表，可查看详情或进入处理态完成研发闭环。</p>
+        </div>
+      </div>
+      <div class="stat-mods n4">
+        <article class="stat-mod">
+          <div class="stat-mod-txt">
+            <div class="stat-mod-label">待纳入商业计划书</div>
+            <div class="stat-mod-num">2</div>
+            <div class="stat-mod-sub">本月新增 <em class="is-up">+2</em>　月新增环比 -</div>
+          </div>
+          <span class="stat-mod-ico t-orange"><img src="../../img/3d/bare/dv-kpi-doc.png" alt=""></span>
+        </article>
+        <article class="stat-mod">
+          <div class="stat-mod-txt">
+            <div class="stat-mod-label">待开发</div>
+            <div class="stat-mod-num">0</div>
+            <div class="stat-mod-sub">本月新增 +0　月新增环比 +0</div>
+          </div>
+          <span class="stat-mod-ico t-blue"><img src="../../img/3d/bare/dv-kpi-code.png" alt=""></span>
+        </article>
+        <article class="stat-mod">
+          <div class="stat-mod-txt">
+            <div class="stat-mod-label">已完成开发</div>
+            <div class="stat-mod-num">0</div>
+            <div class="stat-mod-sub">本月新增 +0　平均处理时长 -</div>
+          </div>
+          <span class="stat-mod-ico t-cyan"><img src="../../img/3d/bare/q-check.png" alt=""></span>
+        </article>
+        <article class="stat-mod">
+          <div class="stat-mod-txt">
+            <div class="stat-mod-label">已纳入商业计划书</div>
+            <div class="stat-mod-num">0</div>
+            <div class="stat-mod-sub">本月新增 +0　平均处理时长 -</div>
+          </div>
+          <span class="stat-mod-ico t-green"><img src="../../img/3d/bare/dv-kpi-folder.png" alt=""></span>
+        </article>
+      </div>
+      <div class="panel">
+        <div class="filter-row filter-box">
+          <div class="filter-fields">
+            <div class="filter-item">
+              <label>紧急程度</label>
+              <div class="select-like" id="dvUrg">
+                <span id="dvUrgLabel">请选择</span>
+                <span class="caret"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                <div class="select-pop">
+                  <button data-val="">全部</button>
+                  <button data-val="高">高</button>
+                  <button data-val="中">中</button>
+                  <button data-val="低">低</button>
+                </div>
+              </div>
+            </div>
+            <div class="filter-item">
+              <label>需求类别</label>
+              <div class="select-like" id="dvCat">
+                <span id="dvCatLabel">请选择</span>
+                <span class="caret"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                <div class="select-pop">
+                  <button data-val="">全部</button>
+                  <button data-val="功能需求">功能需求</button>
+                  <button data-val="非功能需求">非功能需求</button>
+                </div>
+              </div>
+            </div>
+            <div class="filter-item">
+              <label>提出人</label>
+              <input id="dvOwner" class="ctrl" type="text" placeholder="请输入">
+            </div>
+            <div class="filter-item">
+              <label>提出时间</label>
+              <div class="quick-dates" id="dvQuickDates">
+                <button type="button" class="is-on">全部</button>
+                <button type="button">本月</button>
+                <button type="button">本周</button>
+                <button type="button">上月</button>
+                <button type="button">本年</button>
+              </div>
+              <div class="date-pair">
+                <button type="button" class="cal-input" id="dvStart" data-cal="range" data-role="start" data-ph="开始日期">
+                  <span class="cal-val is-ph">开始日期</span>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"/><path d="M2 6h10M5 1.5v2.5M9 1.5v2.5" stroke="currentColor" stroke-linecap="round"/></svg>
+                </button>
+                <button type="button" class="cal-input" id="dvEnd" data-cal="range" data-role="end" data-ph="结束日期">
+                  <span class="cal-val is-ph">结束日期</span>
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"/><path d="M2 6h10M5 1.5v2.5M9 1.5v2.5" stroke="currentColor" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="search-wrap">
+              <input id="dvKw" type="text" placeholder="搜索关键字">
+              <span class="si"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+            </div>
+          </div>
+          <div class="filter-actions">
+            <button class="btn btn-primary" id="dvSearch">查询</button>
+            <button class="btn btn-ghost" id="dvReset">重置</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="table an-table">
+            <thead>
+              <tr>
+                <th>需求编码</th>
+                <th>需求名称</th>
+                <th>产品名称</th>
+                <th>需求类别</th>
+                <th>提出人</th>
+                <th>紧急程度</th>
+                <th>提出时间</th>
+                <th>停留时长</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="dvTbody"></tbody>
+          </table>
+        </div>
+        <div class="pager" id="dvPager"></div>
+      </div>
+    </section>
+  </main>
+
+  
+
+  <div class="dlg hidden" id="confirmDlg">
+    <div class="dlg-mask" id="confirmMask"></div>
+    <div class="dlg-card confirm-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <button type="button" class="dlg-x" id="confirmClose" aria-label="关闭">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+      <div class="confirm-hd">
+        <span class="confirm-ico" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#FFC53D"/><path d="M12 7v6.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.6" r="1.15" fill="#fff"/></svg>
+        </span>
+        <h3 id="confirmTitle">确定要删除吗？</h3>
+      </div>
+      <p class="confirm-desc" id="confirmDesc"></p>
+      <div class="dlg-ft">
+        <button type="button" class="btn btn-ghost" id="confirmCancel">取消</button>
+        <button type="button" class="btn btn-primary" id="confirmOk">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cal-pop hidden" id="calPop"></div>
+
+  <div class="toast" id="toast">
+    <span class="toast-ico is-ok" aria-hidden="true">
+      <img src="../../img/操作成功提醒.svg" width="28" height="28" alt="">
+    </span>
+    <span class="toast-ico is-fail" aria-hidden="true">
+      <img src="../../img/操作失败提醒.svg" width="28" height="28" alt="">
+    </span>
+    <span class="toast-txt"></span>
+  </div>
+
+  <script src="../../js/app.js"></script>
+</body>
+</html>

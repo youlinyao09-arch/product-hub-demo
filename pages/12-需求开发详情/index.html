@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>产品枢纽平台 · 需求开发详情</title>
+  <link rel="stylesheet" href="../../css/app.css">
+</head>
+<body data-standalone="devDetail">
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a class="logo" id="logoHome" href="#/me/todo" title="产品枢纽平台">
+        <img src="../../img/顶部左侧导航栏logo.svg" width="144" height="30" alt="产品枢纽平台">
+      </a>
+
+      <nav class="nav" id="nav">
+        <button class="nav-item is-current" data-key="market">市场管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="req">需求管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="product">产品管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="config">配置管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="me">个人中心<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </nav>
+
+      <div class="header-right">
+        <div class="portal-switch" id="portalSwitch">
+          <span class="portal-label">IPD管理门户</span>
+          <span class="caret" aria-hidden="true"></span>
+          <div class="portal-menu">
+            <button type="button" data-portal="ops">产品运营门户</button>
+            <button type="button" data-portal="ipd" class="is-active">IPD管理门户</button>
+          </div>
+        </div>
+
+        <div class="user-entry" id="userEntry">
+          <img src="../../img/右侧超级管理员头像.svg" width="32" height="32" alt="超级管理员">
+          <span class="uname">超级管理员</span>
+          <div class="user-menu">
+            <button id="goTodo">待办工作台</button>
+            <button type="button" onclick="goPath('#/me/notices')">公告消息</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mega-mask" id="megaMask"></div>
+    <div class="mega" id="mega">
+      <div class="mega-inner">
+        <aside class="mega-l1">
+          <button type="button" class="mega-l1-name" id="megaL1Btn">
+            <span id="megaL1Title">市场管理</span>
+          </button>
+        </aside>
+        <div class="mega-right">
+          <div class="mega-cols" id="megaBody"></div>
+          <button class="mega-close" id="megaClose" aria-label="关闭">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="tags-bar">
+    <div class="tags-list" id="tagsList"></div>
+    <div class="tags-more" id="tagsMore">
+      <button type="button" class="tags-more-btn" id="tagsMoreBtn">
+        操作
+        <span class="caret" aria-hidden="true"></span>
+      </button>
+      <div class="tags-more-menu">
+        <button type="button" data-close-act="others">关闭其它</button>
+        <button type="button" data-close-act="all">关闭全部</button>
+        <button type="button" data-close-act="fullscreen">全屏</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="main">
+    <!-- 需求开发详情 -->
+    <section id="pageReqDevDetail" class="hidden">
+      <div class="rd-head">
+        <button type="button" class="rd-back" id="dvBack" aria-label="返回">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3.5L5.5 8 10 12.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <h1 class="page-title">测试2</h1>
+        <div class="ad-lead-tags">
+          <span class="linetag t-ing">AR 分配需求</span>
+          <span class="st-tag t-warn"><i></i>纳入商业计划书</span>
+          <span class="ad-id is-code">AR-1780-202608269705</span>
+        </div>
+        <div class="rd-head-ops">
+          <button type="button" class="btn btn-ghost" id="dvChange">需求变更申请</button>
+        </div>
+      </div>
+      <div class="ad-grid">
+        <div class="ad-col">
+          <div class="bp-card bp-task-progress">
+            <div class="bp-card-hd">
+              <h3><span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/进度.svg" alt=""></span>需求进度</h3>
+            </div>
+            <div class="step-scroll">
+              <button type="button" class="step-arrow" data-dir="-1" aria-label="向左">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3.5L5.5 8 10 12.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="step-scroll-view">
+                <ol class="ad-steps bp-steps">
+                  <li class="is-done" data-ico="file" data-badge="plus">
+                    <i></i>
+                    <b>需求录入</b>
+                    <em>已完成</em>
+                    <div class="step-people">
+                      <button type="button" class="step-people-btn" aria-label="本环节可处理人">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="4.5" r="2.25" stroke="currentColor" stroke-width="1.2"/><path d="M3 11.2c.35-2.05 1.7-3.2 4-3.2s3.65 1.15 4 3.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        <span>1</span>
+                      </button>
+                      <div class="step-people-pop">
+                        <div class="step-people-hd">本环节可处理人</div>
+                        <ul><li>超级管理员（集团）</li></ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="is-done" data-ico="search">
+                    <i></i>
+                    <b>需求分析</b>
+                    <em>已完成</em>
+                    <div class="step-people">
+                      <button type="button" class="step-people-btn" aria-label="本环节可处理人">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="4.5" r="2.25" stroke="currentColor" stroke-width="1.2"/><path d="M3 11.2c.35-2.05 1.7-3.2 4-3.2s3.65 1.15 4 3.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        <span>2</span>
+                      </button>
+                      <div class="step-people-pop">
+                        <div class="step-people-hd">本环节可处理人</div>
+                        <ul>
+                          <li>RAT测试员5号（咪咕公司）</li>
+                          <li>RAT测试员1号（广东）</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="is-done" data-ico="audit">
+                    <i></i>
+                    <b>需求审核</b>
+                    <em>已完成</em>
+                    <div class="step-people">
+                      <button type="button" class="step-people-btn" aria-label="本环节可处理人">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="4.5" r="2.25" stroke="currentColor" stroke-width="1.2"/><path d="M3 11.2c.35-2.05 1.7-3.2 4-3.2s3.65 1.15 4 3.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        <span>2</span>
+                      </button>
+                      <div class="step-people-pop">
+                        <div class="step-people-hd">本环节可处理人</div>
+                        <ul>
+                          <li>RMT测试员1号（集团）</li>
+                          <li>RAT测试员4号（集团）</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="is-done" data-ico="people" data-badge="check">
+                    <i></i>
+                    <b>需求分配决策</b>
+                    <em>已完成</em>
+                    <div class="step-people">
+                      <button type="button" class="step-people-btn" aria-label="本环节可处理人">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="4.5" r="2.25" stroke="currentColor" stroke-width="1.2"/><path d="M3 11.2c.35-2.05 1.7-3.2 4-3.2s3.65 1.15 4 3.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        <span>2</span>
+                      </button>
+                      <div class="step-people-pop">
+                        <div class="step-people-hd">本环节可处理人</div>
+                        <ul>
+                          <li>RAT测试员5号（咪咕公司）</li>
+                          <li>超级管理员（集团）</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="is-on" data-ico="clipboard" data-badge="plus">
+                    <i></i>
+                    <b>需求纳入商业计划书</b>
+                    <em>进行中</em>
+                    <div class="step-people">
+                      <button type="button" class="step-people-btn" aria-label="本环节可处理人">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="4.5" r="2.25" stroke="currentColor" stroke-width="1.2"/><path d="M3 11.2c.35-2.05 1.7-3.2 4-3.2s3.65 1.15 4 3.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        <span>1</span>
+                      </button>
+                      <div class="step-people-pop">
+                        <div class="step-people-hd">本环节可处理人</div>
+                        <ul><li>超级管理员（集团）</li></ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li data-ico="code">
+                    <i></i>
+                    <b>需求研发</b>
+                    <em>待执行</em>
+                    <div class="step-people">
+                      <button type="button" class="step-people-btn" aria-label="本环节可处理人">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="4.5" r="2.25" stroke="currentColor" stroke-width="1.2"/><path d="M3 11.2c.35-2.05 1.7-3.2 4-3.2s3.65 1.15 4 3.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        <span>2</span>
+                      </button>
+                      <div class="step-people-pop">
+                        <div class="step-people-hd">本环节可处理人</div>
+                        <ul>
+                          <li>RAT测试员5号（咪咕公司）</li>
+                          <li>RAT测试员4号（集团）</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li data-ico="archive" data-badge="check">
+                    <i></i>
+                    <b>需求关闭</b>
+                    <em>待执行</em>
+                    <div class="step-people">
+                      <button type="button" class="step-people-btn" aria-label="本环节可处理人">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="4.5" r="2.25" stroke="currentColor" stroke-width="1.2"/><path d="M3 11.2c.35-2.05 1.7-3.2 4-3.2s3.65 1.15 4 3.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        <span>1</span>
+                      </button>
+                      <div class="step-people-pop">
+                        <div class="step-people-hd">本环节可处理人</div>
+                        <ul><li>RAT测试员1号（广东）</li></ul>
+                      </div>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+              <button type="button" class="step-arrow" data-dir="1" aria-label="向右">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5L10.5 8 6 12.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="ad-main">
+            <div class="ad-tabs" id="dvTabs">
+              <button type="button" class="ad-tab is-on" data-pane="desc">需求描述</button>
+              <button type="button" class="ad-tab" data-pane="bp">关联商业计划书</button>
+              <button type="button" class="ad-tab" data-pane="chg">需求变更记录</button>
+            </div>
+            <div id="dvPaneDesc">
+              <section class="ad-sec">
+                <h3>AR 需求基础信息</h3>
+                <div class="ad-fields">
+                  <div class="ad-field"><label>AR 需求编码</label><div class="ad-val is-code">AR-1780-202608269705</div></div>
+                  <div class="ad-field"><label>需求名称</label><div class="ad-val">测试2</div></div>
+                  <div class="ad-field"><label>产品名称</label><div class="ad-val">12580</div></div>
+                  <div class="ad-field"><label>子产品</label><div class="ad-val">-</div></div>
+                  <div class="ad-field"><label>涉及产品版本</label><div class="ad-val">1.1</div></div>
+                  <div class="ad-field"><label>需求类别</label><div class="ad-val">功能需求-新增功能</div></div>
+                </div>
+              </section>
+              <section class="ad-sec">
+                <h3>需求内容详情</h3>
+                <div class="ad-stack">
+                  <div class="ad-field is-full"><label>需求描述</label><div class="ad-val is-area">11</div></div>
+                  <div class="ad-field is-full"><label>技术成熟度</label><div class="ad-val is-area">11</div></div>
+                  <div class="ad-field is-full"><label>初步方案建议</label><div class="ad-val is-area">11</div></div>
+                </div>
+              </section>
+              <section class="ad-sec">
+                <h3>价值与优先级</h3>
+                <div class="ad-fields n3">
+                  <div class="ad-field"><label>紧急程度</label><div class="ad-val"><span class="linetag t-alert">高</span></div></div>
+                  <div class="ad-field"><label>建议优先级</label><div class="ad-val">-</div></div>
+                  <div class="ad-field"><label>战略契合度</label><div class="ad-val">-</div></div>
+                </div>
+              </section>
+            </div>
+            <div id="dvPaneBp" class="hidden">
+              <div class="empty">
+                <svg width="64" height="48" viewBox="0 0 64 48" fill="none"><rect x="8" y="10" width="48" height="30" rx="4" stroke="#EBEBF0"/><path d="M8 20h48" stroke="#EBEBF0"/><rect x="16" y="26" width="14" height="6" rx="2" fill="#F2F3F5"/><rect x="34" y="26" width="14" height="6" rx="2" fill="#F2F3F5"/></svg>
+                <p>暂无关联商业计划书</p>
+              </div>
+            </div>
+            <div id="dvPaneChg" class="hidden">
+              <div class="empty">
+                <svg width="64" height="48" viewBox="0 0 64 48" fill="none"><rect x="8" y="10" width="48" height="30" rx="4" stroke="#EBEBF0"/><path d="M8 20h48" stroke="#EBEBF0"/><rect x="16" y="26" width="14" height="6" rx="2" fill="#F2F3F5"/><rect x="34" y="26" width="14" height="6" rx="2" fill="#F2F3F5"/></svg>
+                <p>暂无变更记录</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="ad-side side-rail">
+          <section class="side-card">
+            <h3 class="side-card-hd">
+              <span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/文件.svg" alt=""></span>
+              上级 IR 初始需求
+            </h3>
+            <dl class="side-kv">
+              <div><dt>IR 编码</dt><dd class="is-code">IR-1780-202608269705</dd></div>
+              <div><dt>需求名称</dt><dd>测试2</dd></div>
+              <div><dt>所属团队</dt><dd>广东 RAT</dd></div>
+            </dl>
+          </section>
+          <section class="side-card side-card-hero is-pack">
+            <div class="side-hero-top">
+              <h3 class="side-card-hd">
+                <span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/需求来源.svg" alt=""></span>
+                需求来源
+              </h3>
+              <div class="side-metrics is-alert">
+                <div class="t-warn"><span>期望上线时间</span><b class="is-warn">2026-08-27</b></div>
+              </div>
+            </div>
+            <div class="side-pack-body">
+              <dl class="side-kv">
+                <div><dt>来源</dt><dd>集团任务</dd></div>
+                <div><dt>来源团队</dt><dd>广东 RAT</dd></div>
+                <div><dt>提出人</dt><dd>超级管理员</dd></div>
+                <div><dt>联系电话</dt><dd>139****6827</dd></div>
+                <div><dt>联系邮箱</dt><dd>admin@example.com</dd></div>
+                <div><dt>提出时间</dt><dd>2026-08-26 16:21:54</dd></div>
+                <div><dt>停留时长</dt><dd class="is-warn">17小时</dd></div>
+              </dl>
+            </div>
+          </section>
+          <section class="side-card">
+            <h3 class="side-card-hd">
+              <span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/附件.svg" alt=""></span>
+              需求附件
+            </h3>
+            <div class="side-empty">
+              <img src="../../img/文件资源.svg" alt="">
+              <p class="ad-empty">暂无附件</p>
+            </div>
+          </section>
+          <section class="side-card">
+            <h3 class="side-card-hd">
+              <span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/操作日志.svg" alt=""></span>
+              操作日志
+            </h3>
+            <ul class="ad-log">
+              <li>
+                <i class="dot on"></i>
+                <div>
+                  <div class="ad-log-hd"><b>分配至 CDT</b><time>2026-08-26 16:21</time></div>
+                  <p>超级管理员</p>
+                </div>
+              </li>
+              <li>
+                <i class="dot"></i>
+                <div>
+                  <div class="ad-log-hd"><b>需求分配决策</b><time>2026-08-26 16:20</time></div>
+                  <p>超级管理员</p>
+                </div>
+              </li>
+              <li class="ad-log-more hidden">
+                <i class="dot"></i>
+                <div>
+                  <div class="ad-log-hd"><b>需求分析通过</b><time>2026-08-26 11:20</time></div>
+                  <p>RAT测试员1号</p>
+                </div>
+              </li>
+            </ul>
+            <button type="button" class="ad-more" id="dvLogMore">展开日志
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-linecap="round"/></svg>
+            </button>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  
+
+  <div class="dlg hidden" id="confirmDlg">
+    <div class="dlg-mask" id="confirmMask"></div>
+    <div class="dlg-card confirm-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <button type="button" class="dlg-x" id="confirmClose" aria-label="关闭">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+      <div class="confirm-hd">
+        <span class="confirm-ico" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#FFC53D"/><path d="M12 7v6.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.6" r="1.15" fill="#fff"/></svg>
+        </span>
+        <h3 id="confirmTitle">确定要删除吗？</h3>
+      </div>
+      <p class="confirm-desc" id="confirmDesc"></p>
+      <div class="dlg-ft">
+        <button type="button" class="btn btn-ghost" id="confirmCancel">取消</button>
+        <button type="button" class="btn btn-primary" id="confirmOk">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cal-pop hidden" id="calPop"></div>
+
+  <div class="toast" id="toast">
+    <span class="toast-ico is-ok" aria-hidden="true">
+      <img src="../../img/操作成功提醒.svg" width="28" height="28" alt="">
+    </span>
+    <span class="toast-ico is-fail" aria-hidden="true">
+      <img src="../../img/操作失败提醒.svg" width="28" height="28" alt="">
+    </span>
+    <span class="toast-txt"></span>
+  </div>
+
+  <script src="../../js/app.js"></script>
+</body>
+</html>

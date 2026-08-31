@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>产品枢纽平台 · 需求变更</title>
+  <link rel="stylesheet" href="../../css/app.css">
+</head>
+<body data-standalone="change">
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a class="logo" id="logoHome" href="#/me/todo" title="产品枢纽平台">
+        <img src="../../img/顶部左侧导航栏logo.svg" width="144" height="30" alt="产品枢纽平台">
+      </a>
+
+      <nav class="nav" id="nav">
+        <button class="nav-item is-current" data-key="market">市场管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="req">需求管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="product">产品管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="config">配置管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="me">个人中心<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </nav>
+
+      <div class="header-right">
+        <div class="portal-switch" id="portalSwitch">
+          <span class="portal-label">IPD管理门户</span>
+          <span class="caret" aria-hidden="true"></span>
+          <div class="portal-menu">
+            <button type="button" data-portal="ops">产品运营门户</button>
+            <button type="button" data-portal="ipd" class="is-active">IPD管理门户</button>
+          </div>
+        </div>
+
+        <div class="user-entry" id="userEntry">
+          <img src="../../img/右侧超级管理员头像.svg" width="32" height="32" alt="超级管理员">
+          <span class="uname">超级管理员</span>
+          <div class="user-menu">
+            <button id="goTodo">待办工作台</button>
+            <button type="button" onclick="goPath('#/me/notices')">公告消息</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mega-mask" id="megaMask"></div>
+    <div class="mega" id="mega">
+      <div class="mega-inner">
+        <aside class="mega-l1">
+          <button type="button" class="mega-l1-name" id="megaL1Btn">
+            <span id="megaL1Title">市场管理</span>
+          </button>
+        </aside>
+        <div class="mega-right">
+          <div class="mega-cols" id="megaBody"></div>
+          <button class="mega-close" id="megaClose" aria-label="关闭">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="tags-bar">
+    <div class="tags-list" id="tagsList"></div>
+    <div class="tags-more" id="tagsMore">
+      <button type="button" class="tags-more-btn" id="tagsMoreBtn">
+        操作
+        <span class="caret" aria-hidden="true"></span>
+      </button>
+      <div class="tags-more-menu">
+        <button type="button" data-close-act="others">关闭其它</button>
+        <button type="button" data-close-act="all">关闭全部</button>
+        <button type="button" data-close-act="fullscreen">全屏</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="main">
+<!-- 需求变更 -->
+    <section id="pageReqChange" class="hidden">
+      <div class="page-head an-head">
+        <div>
+          <h1 class="an-title">需求变更</h1>
+          <p class="an-desc">展示 AR 重大变更申请，可查看详情并完成审批处理。</p>
+        </div>
+        <button type="button" class="btn btn-primary" id="chApply">变更申请</button>
+      </div>
+      <div class="stat-mods n4">
+        <article class="stat-mod">
+          <div class="stat-mod-txt">
+            <div class="stat-mod-label">待审批</div>
+            <div class="stat-mod-num">5</div>
+            <div class="stat-mod-sub">本月新增 <em class="is-up">+11</em></div>
+          </div>
+          <span class="stat-mod-ico t-blue"><img src="../../img/3d/bare/ch-kpi-stamp.png" alt=""></span>
+        </article>
+        <article class="stat-mod">
+          <div class="stat-mod-txt">
+            <div class="stat-mod-label">已批准</div>
+            <div class="stat-mod-num">23</div>
+            <div class="stat-mod-sub">本月新增 +9　<span class="ok">通过率 92.00%</span></div>
+          </div>
+          <span class="stat-mod-ico t-green"><img src="../../img/3d/bare/q-check.png" alt=""></span>
+        </article>
+        <article class="stat-mod">
+          <div class="stat-mod-txt">
+            <div class="stat-mod-label">已驳回</div>
+            <div class="stat-mod-num">2</div>
+            <div class="stat-mod-sub">本月新增 +1　<span class="err">驳回率 8.00%</span></div>
+          </div>
+          <span class="stat-mod-ico t-red"><img src="../../img/3d/bare/q-close.png" alt=""></span>
+        </article>
+        <article class="stat-mod">
+          <div class="stat-mod-txt">
+            <div class="stat-mod-label">平均审批时长</div>
+            <div class="stat-mod-num">3天</div>
+            <div class="stat-mod-sub">超时预警 4　<span class="err">关注</span></div>
+          </div>
+          <span class="stat-mod-ico t-orange"><img src="../../img/3d/bare/ar-kpi-clock.png" alt=""></span>
+        </article>
+      </div>
+      <div class="panel">
+        <div class="filter-row filter-box">
+          <div class="filter-fields">
+            <div class="filter-item">
+              <label>审批状态</label>
+              <div class="select-like" id="chSt">
+                <span id="chStLabel">请选择</span>
+                <span class="caret"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                <div class="select-pop"><button data-val="">全部</button><button data-val="待审批">待审批</button><button data-val="已批准">已批准</button><button data-val="已驳回">已驳回</button></div>
+              </div>
+            </div>
+            <div class="filter-item">
+              <label>申请时间</label>
+              <div class="date-pair">
+                <button type="button" class="cal-input" id="chStart" data-cal="single" data-ph="开始日期"><span class="cal-val is-ph">开始日期</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"/><path d="M2 6h10M5 1.5v2.5M9 1.5v2.5" stroke="currentColor" stroke-linecap="round"/></svg></button>
+                <button type="button" class="cal-input" id="chEnd" data-cal="single" data-ph="结束日期"><span class="cal-val is-ph">结束日期</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor"/><path d="M2 6h10M5 1.5v2.5M9 1.5v2.5" stroke="currentColor" stroke-linecap="round"/></svg></button>
+              </div>
+            </div>
+            <div class="search-wrap">
+              <input id="chKw" type="text" placeholder="搜索关键字">
+              <span class="si"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+            </div>
+          </div>
+          <div class="filter-actions">
+            <button class="btn btn-primary" id="chSearch">查询</button>
+            <button class="btn btn-ghost" id="chReset">重置</button>
+            <button class="btn btn-ghost" id="chExport">导出</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="table an-table">
+            <thead>
+              <tr>
+                <th>申请单号</th>
+                <th>关联 AR</th>
+                <th>AR 需求名称</th>
+                <th>申请人</th>
+                <th>申请时间</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="chTbody"></tbody>
+          </table>
+        </div>
+        <div class="pager" id="chPager"></div>
+      </div>
+    </section>
+  </main>
+
+  <div class="dlg hidden" id="chgApplyDlg">
+    <div class="dlg-mask" id="chgApplyMask"></div>
+    <div class="dlg-card is-lg" role="dialog" aria-modal="true" aria-labelledby="chgApplyTitle">
+      <div class="dlg-hd">
+        <h3 id="chgApplyTitle">变更申请</h3>
+        <button type="button" class="dlg-x" id="chgApplyClose" aria-label="关闭">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="dlg-bd">
+        <div class="dlg-banner">重大需求变更定义：在商业计划书产品开发尚未发布期间，因战略调整、技术障碍、市场突变等导致需求内容、优先级、实现方式发生重大变化，需重新发起变更并经 RMT 决策。</div>
+        <div class="chg-sec">
+          <span class="chg-n">1</span>
+          <div class="dlg-label"><i class="req-star">*</i>变更需求<button type="button" class="btn btn-ghost is-brand" id="chgPickAr">选择</button></div>
+          <div class="chg-sec-bd">
+            <span class="dlg-hint" id="chgPickHint">请先选择变更的 AR 需求，系统将自动回填需求信息供修改。</span>
+            <div class="chg-picked hidden" id="chgPicked">
+              <a class="an-code" href="javascript:;" id="chgPickCode"></a>
+              <span id="chgPickName"></span>
+            </div>
+          </div>
+        </div>
+        <div class="chg-sec">
+          <span class="chg-n">2</span>
+          <div class="dlg-label"><i class="req-star">*</i>变更原因</div>
+          <div class="chg-sec-bd">
+            <div class="dlg-area">
+              <textarea id="chgReason" maxlength="500" placeholder="请说明发起变更的业务或技术背景、触发条件等"></textarea>
+              <span class="dlg-count">0 / 500</span>
+            </div>
+          </div>
+        </div>
+        <div class="chg-sec">
+          <span class="chg-n">3</span>
+          <div class="dlg-label">影响评估</div>
+          <div class="chg-sec-bd">
+            <div class="fm-grid n3">
+              <div class="fm-item"><label class="fm-lab">进度影响</label><input class="ctrl" id="chgImpactTime" placeholder="如：整体延期 2 周"></div>
+              <div class="fm-item"><label class="fm-lab">成本影响</label><input class="ctrl" id="chgImpactCost" placeholder="如：人力成本 +15%"></div>
+              <div class="fm-item"><label class="fm-lab">风险等级</label>
+                <div class="select-like" id="chgRisk"><span id="chgRiskLabel">请选择</span><span class="caret"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-linecap="round"/></svg></span>
+                  <div class="select-pop"><button data-val="">请选择</button><button data-val="低">低</button><button data-val="中">中</button><button data-val="高">高</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dlg-ft">
+        <button type="button" class="btn btn-ghost" id="chgApplyCancel">取消</button>
+        <button type="button" class="btn btn-primary" id="chgApplyOk">提交申请</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dlg hidden" id="chgPickDlg">
+    <div class="dlg-mask" id="chgPickMask"></div>
+    <div class="dlg-card is-lg" role="dialog" aria-modal="true" aria-labelledby="chgPickTitle">
+      <div class="dlg-hd">
+        <h3 id="chgPickTitle">变更需求列表</h3>
+        <button type="button" class="dlg-x" id="chgPickClose" aria-label="关闭">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="dlg-bd">
+        <div class="chg-pick-bar">
+          <div class="search-wrap">
+            <input id="chgPickKw" type="text" placeholder="搜索 AR 编码、名称...">
+            <span class="si"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span>
+          </div>
+          <div class="select-like" id="chgPickCat">
+            <span id="chgPickCatLabel">请选择需求类别</span>
+            <span class="caret"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-linecap="round"/></svg></span>
+            <div class="select-pop">
+              <button data-val="">全部</button>
+              <button data-val="功能需求">功能需求</button>
+              <button data-val="非功能需求">非功能需求</button>
+            </div>
+          </div>
+          <button type="button" class="link" id="chgPickReset">重置条件</button>
+        </div>
+        <div class="table-wrap chg-pick-wrap">
+          <table class="table an-table chg-pick-table">
+            <thead>
+              <tr>
+                <th>选择</th>
+                <th>AR 编码</th>
+                <th>AR 需求名称</th>
+                <th>产品名称</th>
+                <th>需求类别</th>
+                <th>来源团队</th>
+                <th>紧急程度</th>
+                <th>状态</th>
+                <th>提出时间</th>
+              </tr>
+            </thead>
+            <tbody id="chgPickTbody"></tbody>
+          </table>
+        </div>
+        <div class="pager" id="chgPickPager"></div>
+      </div>
+      <div class="dlg-ft">
+        <button type="button" class="btn btn-ghost" id="chgPickCancel">取消</button>
+        <button type="button" class="btn btn-primary" id="chgPickOk">确定</button>
+      </div>
+    </div>
+  </div>
+
+<div class="dlg hidden" id="chgDetailDlg">
+    <div class="dlg-mask" id="chgDetailMask"></div>
+    <div class="dlg-card is-lg" role="dialog" aria-modal="true" aria-labelledby="chgDetailTitle">
+      <div class="dlg-hd">
+        <h3 id="chgDetailTitle">变更申请详情 <span class="dlg-id">CHG-AR-2000001006-2026082616167</span></h3>
+        <button type="button" class="dlg-x" id="chgDetailClose" aria-label="关闭">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="dlg-bd">
+        <div class="dlg-banner">重大需求变更完成后，如需重新评估分配结论，可 <a class="link" href="javascript:;">重新发起 RMT 决策</a>。</div>
+        <h4 class="fm-hd"><span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/文件.svg" alt=""></span>AR 需求基本信息</h4>
+        <div class="fm-grid">
+          <div class="fm-item"><label class="fm-lab">AR 需求编码</label><div class="fm-ro is-code">AR-1780-202608269705</div></div>
+          <div class="fm-item"><label class="fm-lab">需求名称</label><div class="fm-ro">新通话0825-002（变更3）</div></div>
+          <div class="fm-item"><label class="fm-lab">所属产品</label><div class="fm-ro">新通话</div></div>
+          <div class="fm-item"><label class="fm-lab">子产品</label><div class="fm-ro">-</div></div>
+          <div class="fm-item"><label class="fm-lab">涉及产品版本</label><div class="fm-ro">V3.45</div></div>
+          <div class="fm-item"><label class="fm-lab">需求类别</label><div class="fm-ro">功能需求</div></div>
+        </div>
+        <h4 class="fm-hd"><span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/报告.svg" alt=""></span>需求内容详情</h4>
+        <div class="fm-item is-full"><label class="fm-lab">需求描述</label><div class="fm-ro is-area">为新通话补充定时发送能力，支持按场景配置触达节奏。</div></div>
+        <div class="fm-item is-full"><label class="fm-lab">技术实现方案</label><div class="fm-ro is-area">需对接消息中台定时任务，兼容现网模板。</div></div>
+        <div class="fm-item is-full"><label class="fm-lab">成本与测试建议</label><div class="fm-ro is-area">建议同步回归现网触达模板与计费对账用例。</div></div>
+        <h4 class="fm-hd"><span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/计划书.svg" alt=""></span>价值与优先级</h4>
+        <div class="fm-grid n3">
+          <div class="fm-item"><label class="fm-lab">商业优先级</label><div class="fm-ro">中</div></div>
+          <div class="fm-item"><label class="fm-lab">技术实现优先级</label><div class="fm-ro">中</div></div>
+          <div class="fm-item"><label class="fm-lab">质量优先级</label><div class="fm-ro">中</div></div>
+          <div class="fm-item"><label class="fm-lab">预计收入（万元）</label><div class="fm-ro">30</div></div>
+          <div class="fm-item"><label class="fm-lab">影响客户数</label><div class="fm-ro">30</div></div>
+          <div class="fm-item"><label class="fm-lab">预估开发周期</label><div class="fm-ro">3 周</div></div>
+        </div>
+        <h4 class="fm-hd"><span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/进度.svg" alt=""></span>研发计划</h4>
+        <div class="fm-grid">
+          <div class="fm-item"><label class="fm-lab">计划完成时间</label><div class="fm-ro">2026-08-31</div></div>
+          <div class="fm-item"><label class="fm-lab">计划上线时间</label><div class="fm-ro">2026-08-31</div></div>
+          <div class="fm-item"><label class="fm-lab">软件开发周期</label><div class="fm-ro">5</div></div>
+          <div class="fm-item"><label class="fm-lab">开发工作量（人天）</label><div class="fm-ro">300</div></div>
+        </div>
+        <h4 class="fm-hd"><span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/需求来源.svg" alt=""></span>变更原因</h4>
+        <div class="fm-ro">业务侧调整上线窗口，需同步修改里程碑与资源投入。</div>
+        <h4 class="fm-hd"><span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/备注.svg" alt=""></span>影响评估</h4>
+        <div class="fm-grid n3">
+          <div class="fm-item"><label class="fm-lab">进度影响</label><div class="fm-ro">延期 2 周</div></div>
+          <div class="fm-item"><label class="fm-lab">成本影响</label><div class="fm-ro">人力 +15%</div></div>
+          <div class="fm-item"><label class="fm-lab">风险等级</label><div class="fm-ro">中</div></div>
+        </div>
+        <h4 class="fm-hd"><span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/操作日志.svg" alt=""></span>审批记录</h4>
+        <div class="chg-rec">
+          <span class="linetag t-ok">已通过</span>
+          <p>审批人：平台运营测试员2号　审批时间：2026-08-25 16:40:09</p>
+          <p>审批意见：同意按调整后的里程碑推进，请同步更新商业计划书对应章节。</p>
+          <p>审批附件：无附件</p>
+        </div>
+      </div>
+      <div class="dlg-ft">
+        <button type="button" class="btn btn-ghost" id="chgDetailOk">关闭</button>
+      </div>
+    </div>
+  </div>
+
+<div class="dlg hidden" id="chgApprDlg">
+    <div class="dlg-mask" id="chgApprMask"></div>
+    <div class="dlg-card is-lg" role="dialog" aria-modal="true" aria-labelledby="chgApprTitle">
+      <div class="dlg-hd">
+        <h3 id="chgApprTitle">审批处理 <span class="dlg-id">CHG-AR-2000001006-2026082616167</span></h3>
+        <button type="button" class="dlg-x" id="chgApprClose" aria-label="关闭">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="dlg-bd">
+        <div class="dlg-banner">请核对变更范围与影响评估后给出审批意见。通过或驳回均不可撤回。</div>
+        <h4 class="fm-hd"><span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/文件.svg" alt=""></span>AR 需求基本信息</h4>
+        <div class="fm-grid">
+          <div class="fm-item"><label class="fm-lab">AR 需求编码</label><div class="fm-ro is-code">AR-1780-202608269705</div></div>
+          <div class="fm-item"><label class="fm-lab">需求名称</label><div class="fm-ro">新通话0825-002（变更3）</div></div>
+          <div class="fm-item"><label class="fm-lab">所属产品</label><div class="fm-ro">新通话</div></div>
+          <div class="fm-item"><label class="fm-lab">需求类别</label><div class="fm-ro">功能需求</div></div>
+        </div>
+        <h4 class="fm-hd"><span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/报告.svg" alt=""></span>需求内容详情</h4>
+        <div class="fm-item is-full"><label class="fm-lab">需求描述</label><div class="fm-ro is-area">为新通话补充定时发送能力，支持按场景配置触达节奏。</div></div>
+        <h4 class="fm-hd"><span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/需求来源.svg" alt=""></span>变更原因</h4>
+        <div class="fm-ro">业务侧调整上线窗口，需同步修改里程碑与资源投入。</div>
+        <h4 class="fm-hd"><span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/备注.svg" alt=""></span>影响评估</h4>
+        <div class="fm-grid n3">
+          <div class="fm-item"><label class="fm-lab">进度影响</label><div class="fm-ro">延期 2 周</div></div>
+          <div class="fm-item"><label class="fm-lab">成本影响</label><div class="fm-ro">人力 +15%</div></div>
+          <div class="fm-item"><label class="fm-lab">风险等级</label><div class="fm-ro">中</div></div>
+        </div>
+        <h4 class="fm-hd"><i class="req-star">*</i>审批意见</h4>
+        <div class="dlg-area">
+          <textarea id="chgApprNote" maxlength="500" placeholder="请填写审批意见"></textarea>
+          <span class="dlg-count">0 / 500</span>
+        </div>
+        <h4 class="fm-hd"><span class="wb-hd-ico" aria-hidden="true"><img src="../../img/详情/附件.svg" alt=""></span>上传审批附件</h4>
+        <div class="up-zone">
+          <img src="../../img/文件资源.svg" alt="">
+          <p>拖拽文件至此，或 <a class="link" href="javascript:;">点击上传</a></p>
+          <span>支持 PDF、Word、Excel、PNG、JPG，单个文件不超过 20MB</span>
+        </div>
+      </div>
+      <div class="dlg-ft is-split">
+        <button type="button" class="btn btn-ghost" id="chgApprCancel">取消</button>
+        <div>
+          <button type="button" class="btn btn-ghost btn-reject" id="chgApprReject">驳回</button>
+          <button type="button" class="btn btn-primary" id="chgApprPass">通过</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dlg hidden" id="confirmDlg">
+    <div class="dlg-mask" id="confirmMask"></div>
+    <div class="dlg-card confirm-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <button type="button" class="dlg-x" id="confirmClose" aria-label="关闭">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+      <div class="confirm-hd">
+        <span class="confirm-ico" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#FFC53D"/><path d="M12 7v6.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.6" r="1.15" fill="#fff"/></svg>
+        </span>
+        <h3 id="confirmTitle">确定要删除吗？</h3>
+      </div>
+      <p class="confirm-desc" id="confirmDesc"></p>
+      <div class="dlg-ft">
+        <button type="button" class="btn btn-ghost" id="confirmCancel">取消</button>
+        <button type="button" class="btn btn-primary" id="confirmOk">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cal-pop hidden" id="calPop"></div>
+
+  <div class="toast" id="toast">
+    <span class="toast-ico is-ok" aria-hidden="true">
+      <img src="../../img/操作成功提醒.svg" width="28" height="28" alt="">
+    </span>
+    <span class="toast-ico is-fail" aria-hidden="true">
+      <img src="../../img/操作失败提醒.svg" width="28" height="28" alt="">
+    </span>
+    <span class="toast-txt"></span>
+  </div>
+
+  <script src="../../js/app.js"></script>
+</body>
+</html>

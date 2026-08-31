@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>产品枢纽平台 · 需求总览</title>
+  <link rel="stylesheet" href="../../css/app.css">
+</head>
+<body data-standalone="overview">
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a class="logo" id="logoHome" href="#/me/todo" title="产品枢纽平台">
+        <img src="../../img/顶部左侧导航栏logo.svg" width="144" height="30" alt="产品枢纽平台">
+      </a>
+
+      <nav class="nav" id="nav">
+        <button class="nav-item is-current" data-key="market">市场管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="req">需求管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="product">产品管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="config">配置管理<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="nav-item" data-key="me">个人中心<svg class="nav-arrow" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </nav>
+
+      <div class="header-right">
+        <div class="portal-switch" id="portalSwitch">
+          <span class="portal-label">IPD管理门户</span>
+          <span class="caret" aria-hidden="true"></span>
+          <div class="portal-menu">
+            <button type="button" data-portal="ops">产品运营门户</button>
+            <button type="button" data-portal="ipd" class="is-active">IPD管理门户</button>
+          </div>
+        </div>
+
+        <div class="user-entry" id="userEntry">
+          <img src="../../img/右侧超级管理员头像.svg" width="32" height="32" alt="超级管理员">
+          <span class="uname">超级管理员</span>
+          <div class="user-menu">
+            <button id="goTodo">待办工作台</button>
+            <button type="button" onclick="goPath('#/me/notices')">公告消息</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mega-mask" id="megaMask"></div>
+    <div class="mega" id="mega">
+      <div class="mega-inner">
+        <aside class="mega-l1">
+          <button type="button" class="mega-l1-name" id="megaL1Btn">
+            <span id="megaL1Title">市场管理</span>
+          </button>
+        </aside>
+        <div class="mega-right">
+          <div class="mega-cols" id="megaBody"></div>
+          <button class="mega-close" id="megaClose" aria-label="关闭">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="tags-bar">
+    <div class="tags-list" id="tagsList"></div>
+    <div class="tags-more" id="tagsMore">
+      <button type="button" class="tags-more-btn" id="tagsMoreBtn">
+        操作
+        <span class="caret" aria-hidden="true"></span>
+      </button>
+      <div class="tags-more-menu">
+        <button type="button" data-close-act="others">关闭其它</button>
+        <button type="button" data-close-act="all">关闭全部</button>
+        <button type="button" data-close-act="fullscreen">全屏</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="main">
+<!-- 需求总览 -->
+    <section id="pageReqOverview" class="hidden">
+      <div class="page-head an-head">
+        <div>
+          <h1 class="an-title">需求总览</h1>
+          <p class="an-desc">聚焦需求全生命周期周转、积压风险与团队处理效率。</p>
+        </div>
+      </div>
+      <div class="stat-mods n4">
+        <article class="stat-mod">
+          <div class="stat-mod-txt">
+            <div class="stat-mod-label">RR 原始需求</div>
+            <div class="stat-mod-num">198</div>
+            <div class="stat-mod-sub">全年 RR 总量 · 在途 68</div>
+            <div class="stat-mod-sub">本月新增 <em class="is-up">+95</em>　月新增环比 <em class="is-up">+27%</em></div>
+          </div>
+          <span class="stat-mod-ico t-orange"><img src="../../img/3d/bare/ov-kpi-rr.png" alt=""></span>
+        </article>
+        <article class="stat-mod">
+          <div class="stat-mod-txt">
+            <div class="stat-mod-label">IR 初始需求</div>
+            <div class="stat-mod-num">84</div>
+            <div class="stat-mod-sub">全年 IR 总量 · 在途 11</div>
+            <div class="stat-mod-sub">本月新增 <em class="is-up">+31</em>　月新增环比 <em class="ok">-21%</em></div>
+          </div>
+          <span class="stat-mod-ico t-cyan"><img src="../../img/3d/bare/ov-kpi-ir.png" alt=""></span>
+        </article>
+        <article class="stat-mod">
+          <div class="stat-mod-txt">
+            <div class="stat-mod-label">AR 分配需求</div>
+            <div class="stat-mod-num">68</div>
+            <div class="stat-mod-sub">全年 AR 总量 · 在途 47</div>
+            <div class="stat-mod-sub">本月新增 <em class="is-up">+28</em>　月新增环比 <em class="ok">-3%</em></div>
+          </div>
+          <span class="stat-mod-ico t-blue"><img src="../../img/3d/bare/ov-kpi-ar.png" alt=""></span>
+        </article>
+        <article class="stat-mod">
+          <div class="stat-mod-txt">
+            <div class="stat-mod-label">需求变更</div>
+            <div class="stat-mod-num">30</div>
+            <div class="stat-mod-sub">全年变更总量 · 在途 5</div>
+            <div class="stat-mod-sub">本月新增 <em class="is-up">+11</em>　月新增环比 <em class="ok">-35%</em></div>
+          </div>
+          <span class="stat-mod-ico t-green"><img src="../../img/3d/bare/ov-kpi-chg.png" alt=""></span>
+        </article>
+      </div>
+
+      <div class="ov-mid">
+        <section class="ov-card ov-funnel-card">
+          <div class="ov-card-hd">
+            <h3>需求转化漏斗</h3>
+            <div class="ov-seg" id="ovFunnelSeg">
+              <button type="button" class="is-on" data-span="year">本年</button>
+              <button type="button" data-span="quarter">本季</button>
+              <button type="button" data-span="month">本月</button>
+            </div>
+          </div>
+          <div class="ov-funnel" id="ovFunnel">
+            <div class="ov-fn-left" id="ovRrBlock">
+              <div class="ov-fn-stage">
+                <span class="ov-fn-cap">原始需求</span>
+                <div class="ov-fn-orb is-rr" style="--fill:var(--h-rr)">
+                  <i class="ov-fn-liq" aria-hidden="true"></i>
+                  <i class="ov-fn-wave" aria-hidden="true"></i>
+                  <span class="ov-fn-orb-txt">
+                    <strong><b id="ovRr">204</b> 条</strong>
+                    <em>RR</em>
+                  </span>
+                </div>
+                <p class="ov-fn-note"><em>RR</em><span>需求池起点 · 录入总量</span></p>
+              </div>
+              <div class="ov-fn-bridge">
+                <div class="ov-fn-link">
+                  <span class="ov-fn-step">RR → IR</span>
+                  <span class="ov-fn-slot"><i class="ov-fn-dash"></i></span>
+                  <b id="ovRr2Ir">43%</b>
+                </div>
+              </div>
+              <div class="ov-fn-stage">
+                <span class="ov-fn-cap">初始需求</span>
+                <div class="ov-fn-orb is-ir" style="--fill:var(--h-ir)">
+                  <i class="ov-fn-liq" aria-hidden="true"></i>
+                  <i class="ov-fn-wave" aria-hidden="true"></i>
+                  <span class="ov-fn-orb-txt">
+                    <strong><b id="ovIr">87</b> 条</strong>
+                    <em>IR</em>
+                  </span>
+                </div>
+                <p class="ov-fn-note"><em>IR</em><span>需求分析审核通过后生成</span></p>
+              </div>
+              <div class="ov-fn-bridge">
+                <div class="ov-fn-link">
+                  <span class="ov-fn-step">IR → AR</span>
+                  <span class="ov-fn-slot"><i class="ov-fn-dash"></i></span>
+                  <b id="ovIr2Ar">82%</b>
+                </div>
+              </div>
+              <div class="ov-fn-stage">
+                <span class="ov-fn-cap">分配需求</span>
+                <div class="ov-fn-orb is-ar" style="--fill:var(--h-ar)">
+                  <i class="ov-fn-liq" aria-hidden="true"></i>
+                  <i class="ov-fn-wave" aria-hidden="true"></i>
+                  <span class="ov-fn-orb-txt">
+                    <strong><b id="ovAr">71</b> 条</strong>
+                    <em>AR</em>
+                  </span>
+                </div>
+                <p class="ov-fn-note"><em>AR</em><span>实际占 RR 约 <i id="ovArHint">35%</i></span></p>
+              </div>
+            </div>
+            <div class="ov-fn-right">
+              <div class="ov-fn-link is-arm">
+                <span class="ov-fn-step">AR → PDT</span>
+                <span class="ov-fn-slot"><i class="ov-fn-dash"></i></span>
+                <b id="ovArPdt">30%</b>
+              </div>
+              <a class="ov-fn-end" href="#/req/dev">
+                <span class="ov-fn-cap">PDT 研发闭环</span>
+                <div class="ov-fn-orb is-sm" style="--fill:var(--h-pdt)">
+                  <i class="ov-fn-liq" aria-hidden="true"></i>
+                  <i class="ov-fn-wave" aria-hidden="true"></i>
+                  <span class="ov-fn-orb-txt">
+                    <strong><b id="ovPdt">21</b> 条</strong>
+                    <em>PDT</em>
+                  </span>
+                </div>
+                <p>待开发 / 关闭</p>
+              </a>
+              <div class="ov-fn-link is-arm">
+                <span class="ov-fn-step">AR → CDT</span>
+                <span class="ov-fn-slot"><i class="ov-fn-dash"></i></span>
+                <b id="ovArCdt">70%</b>
+              </div>
+              <a class="ov-fn-end" href="#/product/bp-publish">
+                <span class="ov-fn-cap">CDT 规划分流</span>
+                <div class="ov-fn-orb is-sm" style="--fill:var(--h-cdt)">
+                  <i class="ov-fn-liq" aria-hidden="true"></i>
+                  <i class="ov-fn-wave" aria-hidden="true"></i>
+                  <span class="ov-fn-orb-txt">
+                    <strong><b id="ovCdt">50</b> 条</strong>
+                    <em>CDT</em>
+                  </span>
+                </div>
+                <p>待纳入商业计划书</p>
+              </a>
+            </div>
+          </div>
+        </section>
+        <div class="ov-right">
+          <section class="ov-card ov-status-card">
+            <div class="ov-card-hd">
+              <h3>需求状态概览<span class="ov-tip" tabindex="0" data-tip="含 RAT 分析/审核、分配决策、PDT 研发、AR 变更等状态统计">!</span></h3>
+            </div>
+            <div class="ov-status" id="ovStatusChart"></div>
+          </section>
+          <section class="ov-card ov-eff-card">
+            <div class="ov-card-hd">
+              <h3>流转效率概览<span class="ov-tip" tabindex="0" data-tip="各环节平均处理时效与一次通过率（本月）">!</span></h3>
+            </div>
+            <div class="ov-eff">
+              <article class="ov-eff-item is-blue">
+                <div class="ov-eff-hd">
+                  <span>平均分析时长</span>
+                  <i class="ov-eff-ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7"/><path d="M12 8v4.2l2.8 1.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </i>
+                </div>
+                <b>16<small>小时</small>48<small>分钟</small></b>
+                <div class="ov-eff-bar" aria-hidden="true"><i style="width:72%"></i></div>
+              </article>
+              <article class="ov-eff-item is-green">
+                <div class="ov-eff-hd">
+                  <span>平均分配时长</span>
+                  <i class="ov-eff-ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7"/><path d="M9.2 12h5.6M12 9.2v5.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                  </i>
+                </div>
+                <b>1<small>小时</small>5<small>分钟</small></b>
+                <div class="ov-eff-bar" aria-hidden="true"><i style="width:38%"></i></div>
+              </article>
+              <article class="ov-eff-item is-purple">
+                <div class="ov-eff-hd">
+                  <span>平均研发时间</span>
+                  <i class="ov-eff-ico" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.7"/><path d="M10 9.5 8 12l2 2.5M14 9.5l2 2.5-2 2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </i>
+                </div>
+                <b>2<small>小时</small>24<small>分钟</small></b>
+                <div class="ov-eff-bar" aria-hidden="true"><i style="width:54%"></i></div>
+              </article>
+              <article class="ov-eff-item is-brand">
+                <div class="ov-eff-hd">
+                  <span>一次通过率</span>
+                  <i class="ov-eff-ring" aria-hidden="true" style="--p:72">
+                    <svg viewBox="0 0 36 36">
+                      <circle class="ov-eff-ring-bg" cx="18" cy="18" r="14"></circle>
+                      <circle class="ov-eff-ring-fg" cx="18" cy="18" r="14"></circle>
+                    </svg>
+                  </i>
+                </div>
+                <b>72<small>%</small></b>
+                <div class="ov-eff-bar" aria-hidden="true"><i style="width:72%"></i></div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="ov-bot">
+                <section class="ov-card">
+          <div class="ov-card-hd">
+            <h3>需求来源渠道分布<span class="ov-tip" tabindex="0" data-tip="按需求提出的团队和来源省份统计需求录入数量">!</span></h3>
+            <div class="ov-seg" id="ovChanTabs">
+              <button type="button" class="is-on" data-chan="team">团队分布</button>
+              <button type="button" data-chan="prov">省份分布</button>
+            </div>
+          </div>
+          <div class="ov-chan-chart" id="ovChanTeam"></div>
+          <div class="ov-chan-chart hidden" id="ovChanProv"></div>
+        </section>
+                <section class="ov-card">
+          <div class="ov-card-hd">
+            <h3>产品需求分布 TOP6<span class="ov-tip" tabindex="0" data-tip="按归属的产品维度统计需求数量">!</span></h3>
+          </div>
+          <div class="ov-rank">
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-medal" aria-label="第1名"><img src="../../img/排行榜/金牌.png" alt=""></span>
+              <span class="ov-rank-name">咪咕音乐</span>
+              <div class="ov-rank-track"><i style="width:24%"></i></div>
+              <span class="ov-rank-pct">24%</span>
+              <span class="ov-rank-val">89</span>
+            </div>
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-medal" aria-label="第2名"><img src="../../img/排行榜/银牌.png" alt=""></span>
+              <span class="ov-rank-name">咪咕阅读</span>
+              <div class="ov-rank-track"><i style="width:20%"></i></div>
+              <span class="ov-rank-pct">20%</span>
+              <span class="ov-rank-val">71</span>
+            </div>
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-medal" aria-label="第3名"><img src="../../img/排行榜/铜牌.png" alt=""></span>
+              <span class="ov-rank-name">视频彩铃</span>
+              <div class="ov-rank-track"><i style="width:12%"></i></div>
+              <span class="ov-rank-pct">12%</span>
+              <span class="ov-rank-val">45</span>
+            </div>
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-num">4</span>
+              <span class="ov-rank-name">咪咕视频</span>
+              <div class="ov-rank-track"><i style="width:10%"></i></div>
+              <span class="ov-rank-pct">10%</span>
+              <span class="ov-rank-val">38</span>
+            </div>
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-num">5</span>
+              <span class="ov-rank-name">移动云盘</span>
+              <div class="ov-rank-track"><i style="width:9%"></i></div>
+              <span class="ov-rank-pct">9%</span>
+              <span class="ov-rank-val">34</span>
+            </div>
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-num">6</span>
+              <span class="ov-rank-name">新通话</span>
+              <div class="ov-rank-track"><i style="width:7%"></i></div>
+              <span class="ov-rank-pct">7%</span>
+              <span class="ov-rank-val">25</span>
+            </div>
+          </div>
+        </section>
+        <section class="ov-card ov-src-card">
+          <div class="ov-card-hd">
+            <h3>需求来源分布 TOP5<span class="ov-tip" tabindex="0" data-tip="按录入系统统计需求来源分布数量">!</span></h3>
+            <div class="ov-seg" id="ovSrcTabs">
+              <button type="button" class="is-on" data-src="hub">产品枢纽平台</button>
+              <button type="button" data-src="qa">品质管理平台</button>
+            </div>
+          </div>
+          <div class="ov-rank" id="ovSrcHub">
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-medal" aria-label="第1名"><img src="../../img/排行榜/金牌.png" alt=""></span>
+              <span class="ov-rank-name">用户调研</span>
+              <div class="ov-rank-track"><i style="width:48%"></i></div>
+              <span class="ov-rank-pct">48%</span>
+              <span class="ov-rank-val">175</span>
+            </div>
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-medal" aria-label="第2名"><img src="../../img/排行榜/银牌.png" alt=""></span>
+              <span class="ov-rank-name">国家战略</span>
+              <div class="ov-rank-track"><i style="width:11%"></i></div>
+              <span class="ov-rank-pct">11%</span>
+              <span class="ov-rank-val">40</span>
+            </div>
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-medal" aria-label="第3名"><img src="../../img/排行榜/铜牌.png" alt=""></span>
+              <span class="ov-rank-name">战略规划</span>
+              <div class="ov-rank-track"><i style="width:10%"></i></div>
+              <span class="ov-rank-pct">10%</span>
+              <span class="ov-rank-val">37</span>
+            </div>
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-num">4</span>
+              <span class="ov-rank-name">集团任务</span>
+              <div class="ov-rank-track"><i style="width:7%"></i></div>
+              <span class="ov-rank-pct">7%</span>
+              <span class="ov-rank-val">27</span>
+            </div>
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-num">5</span>
+              <span class="ov-rank-name">用户投诉</span>
+              <div class="ov-rank-track"><i style="width:7%"></i></div>
+              <span class="ov-rank-pct">7%</span>
+              <span class="ov-rank-val">25</span>
+            </div>
+          </div>
+          <div class="ov-rank hidden" id="ovSrcQa">
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-medal" aria-label="第1名"><img src="../../img/排行榜/金牌.png" alt=""></span>
+              <span class="ov-rank-name">用户调研</span>
+              <div class="ov-rank-track"><i style="width:0"></i></div>
+              <span class="ov-rank-pct">-</span>
+              <span class="ov-rank-val">-</span>
+            </div>
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-medal" aria-label="第2名"><img src="../../img/排行榜/银牌.png" alt=""></span>
+              <span class="ov-rank-name">国家战略</span>
+              <div class="ov-rank-track"><i style="width:0"></i></div>
+              <span class="ov-rank-pct">-</span>
+              <span class="ov-rank-val">-</span>
+            </div>
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-medal" aria-label="第3名"><img src="../../img/排行榜/铜牌.png" alt=""></span>
+              <span class="ov-rank-name">战略规划</span>
+              <div class="ov-rank-track"><i style="width:0"></i></div>
+              <span class="ov-rank-pct">-</span>
+              <span class="ov-rank-val">-</span>
+            </div>
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-num">4</span>
+              <span class="ov-rank-name">集团任务</span>
+              <div class="ov-rank-track"><i style="width:0"></i></div>
+              <span class="ov-rank-pct">-</span>
+              <span class="ov-rank-val">-</span>
+            </div>
+            <div class="ov-rank-row">
+              <span class="ov-rank-no is-num">5</span>
+              <span class="ov-rank-name">用户投诉</span>
+              <div class="ov-rank-track"><i style="width:0"></i></div>
+              <span class="ov-rank-pct">-</span>
+              <span class="ov-rank-val">-</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  
+
+  <div class="dlg hidden" id="confirmDlg">
+    <div class="dlg-mask" id="confirmMask"></div>
+    <div class="dlg-card confirm-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <button type="button" class="dlg-x" id="confirmClose" aria-label="关闭">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+      <div class="confirm-hd">
+        <span class="confirm-ico" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#FFC53D"/><path d="M12 7v6.2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="16.6" r="1.15" fill="#fff"/></svg>
+        </span>
+        <h3 id="confirmTitle">确定要删除吗？</h3>
+      </div>
+      <p class="confirm-desc" id="confirmDesc"></p>
+      <div class="dlg-ft">
+        <button type="button" class="btn btn-ghost" id="confirmCancel">取消</button>
+        <button type="button" class="btn btn-primary" id="confirmOk">确定</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cal-pop hidden" id="calPop"></div>
+
+  <div class="toast" id="toast">
+    <span class="toast-ico is-ok" aria-hidden="true">
+      <img src="../../img/操作成功提醒.svg" width="28" height="28" alt="">
+    </span>
+    <span class="toast-ico is-fail" aria-hidden="true">
+      <img src="../../img/操作失败提醒.svg" width="28" height="28" alt="">
+    </span>
+    <span class="toast-txt"></span>
+  </div>
+
+  <script src="../../js/app.js"></script>
+</body>
+</html>
