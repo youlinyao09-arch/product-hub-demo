@@ -1694,11 +1694,11 @@ function renderSpectrumStats() {
   const box = document.getElementById("spKpis");
   if (!box) return;
   const items = [
-    { label: "一级业务", num: l1, tone: "blue", ico: "img/3d/bare/sp-kpi-v2-l1.png" },
-    { label: "二级业务", num: l2, tone: "cyan", ico: "img/3d/bare/sp-kpi-v2-l2.png" },
-    { label: "三级业务", num: l3, tone: "purple", ico: "img/3d/bare/sp-kpi-v2-l3.png" },
-    { label: "四级产品", num: l4, tone: "orange", ico: "img/3d/bare/sp-kpi-v2-l4.png" },
-    { label: "五级产品", num: l5, tone: "green", ico: "img/3d/bare/sp-kpi-v2-l5.png" },
+    { label: "一级业务", num: l1, tone: "blue", ico: "img/bare/sp-kpi-v2-l1.png" },
+    { label: "二级业务", num: l2, tone: "cyan", ico: "img/bare/sp-kpi-v2-l2.png" },
+    { label: "三级业务", num: l3, tone: "purple", ico: "img/bare/sp-kpi-v2-l3.png" },
+    { label: "四级产品", num: l4, tone: "orange", ico: "img/bare/sp-kpi-v2-l4.png" },
+    { label: "五级产品", num: l5, tone: "green", ico: "img/bare/sp-kpi-v2-l5.png" },
   ];
   box.innerHTML = items.map((it) => `
     <article class="stat-mod">
@@ -2214,14 +2214,14 @@ const BO_DONE = Array.from({ length: 27 }, (_, i) => {
 const boState = { tab: "ing", kw: "", page: 1, pageSize: 10, unit: "migu", units: ["migu", "internet", "jinke"] };
 
 const BO_STAGES = [
-  { key: "assign", name: "商业计划书分派", card: "计划书分派", short: "商业计划书<br>分派", ico: "img/3d/bare/q-assign.png", bar: "#417FFB" },
-  { key: "compile", name: "商业计划书编制", card: "计划书编制", short: "商业计划书<br>编制", ico: "img/3d/bare/bo-unit-doc.png", bar: "#417FFB" },
-  { key: "cdt", name: "CDT团队负责人审批", card: "CDT审批", short: "CDT团队<br>负责人审批", ico: "img/3d/bare/q-cdt.png", bar: "#417FFB" },
-  { key: "first", name: "商业计划书初审", card: "计划书初审", short: "商业计划书<br>初审", ico: "img/3d/bare/q-search.png", bar: "#417FFB" },
-  { key: "pmt", name: "PMT领导审批", card: "PMT审批", short: "PMT领导<br>审批", ico: "img/3d/bare/q-users.png", bar: "#417FFB" },
-  { key: "pm", name: "集团产品PM审查", card: "PM审查", short: "集团产品<br>PM审查", ico: "img/3d/bare/q-pdt.png", bar: "#417FFB" },
-  { key: "mgr", name: "集团处室经理审批", card: "处室审批", short: "集团处室<br>经理审批", ico: "img/3d/bare/bo-unit-stamp.png", bar: "#417FFB" },
-  { key: "review", name: "商业计划书评审", card: "计划书评审", short: "商业计划书<br>评审", ico: "img/3d/bare/q-eval.png", bar: "#417FFB" },
+  { key: "assign", name: "商业计划书分派", card: "计划书分派", short: "商业计划书<br>分派", ico: "img/bare/q-assign.png", bar: "#417FFB" },
+  { key: "compile", name: "商业计划书编制", card: "计划书编制", short: "商业计划书<br>编制", ico: "img/bare/bo-unit-doc.png", bar: "#417FFB" },
+  { key: "cdt", name: "CDT团队负责人审批", card: "CDT审批", short: "CDT团队<br>负责人审批", ico: "img/bare/q-cdt.png", bar: "#417FFB" },
+  { key: "first", name: "商业计划书初审", card: "计划书初审", short: "商业计划书<br>初审", ico: "img/bare/q-search.png", bar: "#417FFB" },
+  { key: "pmt", name: "PMT领导审批", card: "PMT审批", short: "PMT领导<br>审批", ico: "img/bare/q-users.png", bar: "#417FFB" },
+  { key: "pm", name: "集团产品PM审查", card: "PM审查", short: "集团产品<br>PM审查", ico: "img/bare/q-pdt.png", bar: "#417FFB" },
+  { key: "mgr", name: "集团处室经理审批", card: "处室审批", short: "集团处室<br>经理审批", ico: "img/bare/bo-unit-stamp.png", bar: "#417FFB" },
+  { key: "review", name: "商业计划书评审", card: "计划书评审", short: "商业计划书<br>评审", ico: "img/bare/q-eval.png", bar: "#417FFB" },
 ];
 const BO_PIE = ["#6799FC", "#84EAB7", "#FFD381", "#918DFC", "#FF8EC3", "#417FFB", "#A8C5FD", "#C4C1FD"];
 const BO_HBAR_KEYS = ["review", "mgr", "pm", "pmt", "first", "cdt", "compile", "assign"];
@@ -3396,7 +3396,7 @@ function renderInsightDetail() {
     (arr || []).map((t) => `<span class="tag${cls ? " " + cls : ""}">${t}</span>`).join("") || "-";
   document.getElementById("insightInfo").innerHTML = `
       <h3 class="side-card-hd">
-        <span class="wb-hd-ico" aria-hidden="true"><img src="img/详情/报告.svg" alt=""></span>
+        <span class="wb-hd-ico" aria-hidden="true"><img src="img/detail/report.svg" alt=""></span>
         <span class="side-card-hd-txt">${r.title}</span>
         ${r.unread ? `<span class="unread-flag">未读</span>` : `<span class="linetag t-ing">${dash(r.company)}</span>`}
       </h3>
@@ -3408,7 +3408,7 @@ function renderInsightDetail() {
         <div><dt>标签</dt><dd>${chips(reportLabels(r))}</dd></div>
       </dl>
       <div class="side-file">
-        <img src="img/详情/文件.svg" alt="">
+        <img src="img/detail/file.svg" alt="">
         <span>${file}</span>
       </div>`;
   const rows = [
@@ -3544,28 +3544,28 @@ const QUICK_CATALOG = [
   {
     title: "市场管理",
     items: [
-      { id: "insight", name: "市场洞察", path: "#/market/insight", icon: "img/3d/quick/q-insight.png", tone: "blue" },
+      { id: "insight", name: "市场洞察", path: "#/market/insight", icon: "img/quick/q-insight.png", tone: "blue" },
     ],
   },
   {
     title: "需求管理",
     items: [
-      { id: "req-overview", name: "需求总览", path: "#/req/overview", icon: "img/3d/quick/q-req-overview.png", tone: "blue" },
-      { id: "req-list", name: "需求清单", path: "#/req/list", icon: "img/3d/quick/q-doc.png", tone: "orange" },
-      { id: "req-analysis", name: "需求分析", path: "#/req/analysis", icon: "img/3d/quick/q-req-analysis.png", tone: "red" },
-      { id: "req-assign", name: "需求分配", path: "#/req/assign", icon: "img/3d/quick/q-assign.png", tone: "blue" },
-      { id: "req-arbitrate", name: "需求仲裁", path: "#/req/arbitrate", icon: "img/3d/quick/q-scale.png", tone: "orange" },
-      { id: "req-change", name: "需求变更", path: "#/req/change", icon: "img/3d/quick/q-change.png", tone: "green" },
-      { id: "req-dev", name: "需求开发", path: "#/req/dev", icon: "img/3d/quick/q-dev-code.png", tone: "purple" },
+      { id: "req-overview", name: "需求总览", path: "#/req/overview", icon: "img/quick/q-req-overview.png", tone: "blue" },
+      { id: "req-list", name: "需求清单", path: "#/req/list", icon: "img/quick/q-doc.png", tone: "orange" },
+      { id: "req-analysis", name: "需求分析", path: "#/req/analysis", icon: "img/quick/q-req-analysis.png", tone: "red" },
+      { id: "req-assign", name: "需求分配", path: "#/req/assign", icon: "img/quick/q-assign.png", tone: "blue" },
+      { id: "req-arbitrate", name: "需求仲裁", path: "#/req/arbitrate", icon: "img/quick/q-scale.png", tone: "orange" },
+      { id: "req-change", name: "需求变更", path: "#/req/change", icon: "img/quick/q-change.png", tone: "green" },
+      { id: "req-dev", name: "需求开发", path: "#/req/dev", icon: "img/quick/q-dev-code.png", tone: "purple" },
     ],
   },
   {
     title: "产品管理",
     items: [
-      { id: "spectrum", name: "产品型谱", path: "#/product/spectrum", icon: "img/3d/quick/q-cube-cyan.png", tone: "blue" },
-      { id: "bp-overview", name: "商业计划书总览", path: "#/product/bp-overview", icon: "img/3d/quick/q-bp-overview.png", tone: "green" },
-      { id: "bp-publish", name: "商业计划书任务发布", path: "#/product/bp-publish", icon: "img/3d/quick/q-plane.png", tone: "blue" },
-      { id: "bp-handle", name: "商业计划书任务处理", path: "#/product/bp-handle", icon: "img/3d/quick/q-bp-handle.png", tone: "orange" },
+      { id: "spectrum", name: "产品型谱", path: "#/product/spectrum", icon: "img/quick/q-cube-cyan.png", tone: "blue" },
+      { id: "bp-overview", name: "商业计划书总览", path: "#/product/bp-overview", icon: "img/quick/q-bp-overview.png", tone: "green" },
+      { id: "bp-publish", name: "商业计划书任务发布", path: "#/product/bp-publish", icon: "img/quick/q-plane.png", tone: "blue" },
+      { id: "bp-handle", name: "商业计划书任务处理", path: "#/product/bp-handle", icon: "img/quick/q-bp-handle.png", tone: "orange" },
     ],
   },
   {
@@ -3574,39 +3574,39 @@ const QUICK_CATALOG = [
       {
         title: "型谱配置",
         items: [
-          { id: "spectrum-catalog", name: "型谱目录配置", path: "#/config/spectrum-catalog", icon: "img/3d/quick/q-catalog.png", tone: "purple" },
-          { id: "product-tags", name: "产品标签管理", path: "#/config/product-tags", icon: "img/3d/quick/q-tags.png", tone: "cyan" },
+          { id: "spectrum-catalog", name: "型谱目录配置", path: "#/config/spectrum-catalog", icon: "img/quick/q-catalog.png", tone: "purple" },
+          { id: "product-tags", name: "产品标签管理", path: "#/config/product-tags", icon: "img/quick/q-tags.png", tone: "cyan" },
         ],
       },
       {
         title: "产品IPD配置",
         items: [
-          { id: "ipd-team", name: "产品IPD团队", path: "#/config/ipd-team", icon: "img/3d/quick/q-users-blue.png", tone: "blue" },
-          { id: "templates", name: "模板管理", path: "#/config/templates", icon: "img/3d/quick/q-doc-blue.png", tone: "blue" },
-          { id: "bp-score", name: "商业计划书评分规则", path: "#/config/bp-score", icon: "img/3d/quick/q-eval.png", tone: "cyan" },
-          { id: "req-rules", name: "需求设置规则", path: "#/config/req-rules", icon: "img/3d/quick/q-rules.png", tone: "orange" },
+          { id: "ipd-team", name: "产品IPD团队", path: "#/config/ipd-team", icon: "img/quick/q-users-blue.png", tone: "blue" },
+          { id: "templates", name: "模板管理", path: "#/config/templates", icon: "img/quick/q-doc-blue.png", tone: "blue" },
+          { id: "bp-score", name: "商业计划书评分规则", path: "#/config/bp-score", icon: "img/quick/q-eval.png", tone: "cyan" },
+          { id: "req-rules", name: "需求设置规则", path: "#/config/req-rules", icon: "img/quick/q-rules.png", tone: "orange" },
         ],
       },
       {
         title: "基础配置",
         items: [
-          { id: "roles", name: "角色管理", path: "#/config/roles", icon: "img/3d/quick/q-users-blue.png", tone: "blue" },
-          { id: "account-review", name: "账号审阅记录", path: "#/config/account-review", icon: "img/3d/quick/q-stamp.png", tone: "green" },
-          { id: "org", name: "组织管理", path: "#/config/org", icon: "img/3d/quick/q-apps.png", tone: "cyan" },
-          { id: "accounts", name: "账号管理", path: "#/config/accounts", icon: "img/3d/quick/q-account.png", tone: "blue" },
-          { id: "menus", name: "菜单管理", path: "#/config/menus", icon: "img/3d/quick/q-apps-purple.png", tone: "purple" },
-          { id: "cache", name: "缓存管理", path: "#/config/cache", icon: "img/3d/quick/q-cache.png", tone: "cyan" },
-          { id: "permissions", name: "操作权限管理", path: "#/config/permissions", icon: "img/3d/quick/q-permission.png", tone: "orange" },
+          { id: "roles", name: "角色管理", path: "#/config/roles", icon: "img/quick/q-users-blue.png", tone: "blue" },
+          { id: "account-review", name: "账号审阅记录", path: "#/config/account-review", icon: "img/quick/q-stamp.png", tone: "green" },
+          { id: "org", name: "组织管理", path: "#/config/org", icon: "img/quick/q-apps.png", tone: "cyan" },
+          { id: "accounts", name: "账号管理", path: "#/config/accounts", icon: "img/quick/q-account.png", tone: "blue" },
+          { id: "menus", name: "菜单管理", path: "#/config/menus", icon: "img/quick/q-apps-purple.png", tone: "purple" },
+          { id: "cache", name: "缓存管理", path: "#/config/cache", icon: "img/quick/q-cache.png", tone: "cyan" },
+          { id: "permissions", name: "操作权限管理", path: "#/config/permissions", icon: "img/quick/q-permission.png", tone: "orange" },
         ],
       },
       {
         title: "流程管理",
         items: [
-          { id: "process-nodes", name: "环节配置", path: "#/config/process-nodes", icon: "img/3d/quick/q-target.png", tone: "blue" },
-          { id: "process-model", name: "流程建模", path: "#/config/process-model", icon: "img/3d/quick/q-flow.png", tone: "purple" },
-          { id: "process-inst", name: "流程实例管理", path: "#/config/process-inst", icon: "img/3d/quick/q-clock-cyan.png", tone: "cyan" },
-          { id: "exceptions", name: "异常单管理", path: "#/config/exceptions", icon: "img/3d/quick/q-exception.png", tone: "red" },
-          { id: "testdata", name: "测试数据清理", path: "#/config/testdata", icon: "img/3d/quick/q-cleanup.png", tone: "orange" },
+          { id: "process-nodes", name: "环节配置", path: "#/config/process-nodes", icon: "img/quick/q-target.png", tone: "blue" },
+          { id: "process-model", name: "流程建模", path: "#/config/process-model", icon: "img/quick/q-flow.png", tone: "purple" },
+          { id: "process-inst", name: "流程实例管理", path: "#/config/process-inst", icon: "img/quick/q-clock-cyan.png", tone: "cyan" },
+          { id: "exceptions", name: "异常单管理", path: "#/config/exceptions", icon: "img/quick/q-exception.png", tone: "red" },
+          { id: "testdata", name: "测试数据清理", path: "#/config/testdata", icon: "img/quick/q-cleanup.png", tone: "orange" },
         ],
       },
     ],
@@ -3614,7 +3614,7 @@ const QUICK_CATALOG = [
   {
     title: "个人中心",
     items: [
-      { id: "notices", name: "公告消息", path: "#/me/notices", icon: "img/3d/quick/q-bell.png", tone: "green" },
+      { id: "notices", name: "公告消息", path: "#/me/notices", icon: "img/quick/q-bell.png", tone: "green" },
     ],
   },
 ];
